@@ -18,4 +18,7 @@ var ZhCn = subMsgType{
 	TokenExpire:       "token过期",
 	TokenError:        "token错误",
 	TokenNotValid:     "token未生效",
+
+	// 文件
+	FileUploadFail: "文件上传失败",
 }

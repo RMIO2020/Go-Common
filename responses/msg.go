@@ -29,6 +29,9 @@ const (
 	TokenExpire       = "TokenExpire"
 	TokenError        = "TokenError"
 	TokenNotValid     = "tokenNotValid"
+
+	// 文件
+	FileUploadFail = "FileUploadFail"
 )
 
 // RespBody 响应体

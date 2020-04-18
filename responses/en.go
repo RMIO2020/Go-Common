@@ -18,4 +18,7 @@ var En = subMsgType{
 	TokenExpire:       "Token expire",
 	TokenError:        "Token error",
 	TokenNotValid:     "token is not valid",
+
+	// 文件
+	FileUploadFail: "Upload file error",
 }
