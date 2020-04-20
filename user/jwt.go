@@ -4,8 +4,6 @@ import (
 	"github.com/dgrijalva/jwt-go"
 )
 
-type Secret []byte
-
 // 自定义结构体参数
 type TokenClaims struct {
 	Data DataClaims
@@ -26,10 +24,10 @@ type JwtCreate struct {
 	ExpiresTime int64  // 失效时间
 	UserId      string // 用户 id
 	Token       string // 用户 token
-	Secret      Secret // JWT 密钥
+	Secret      []byte // JWT 密钥
 }
 
-func NewCJwt(NowTime int64, ExpiresTime int64, UserId string, Token string, Secret Secret) *JwtCreate {
+func NewCJwt(NowTime int64, ExpiresTime int64, UserId string, Token string, Secret []byte) *JwtCreate {
 	return &JwtCreate{
 		NowTime:     NowTime,
 		ExpiresTime: ExpiresTime,
@@ -61,10 +59,10 @@ func (s *JwtCreate) CreateJwt() (jwtToken string, err error) {
  * 解析 JWT 相关
 **/
 type JwtParsing struct {
-	Secret Secret
+	Secret []byte
 }
 
-func NewParsing(Secret Secret) *JwtParsing {
+func NewParsing(Secret []byte) *JwtParsing {
 	return &JwtParsing{
 		Secret: Secret,
 	}
