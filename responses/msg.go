@@ -18,6 +18,7 @@ const (
 	ParameterError    = "ParameterError"
 	OperationFailed   = "OperationFailed"
 	MissingParameters = "MissingParameters"
+	InternalDataError = "InternalDataError"
 
 	// 用户
 	UserExists    = "UserExists"
