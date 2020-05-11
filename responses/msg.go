@@ -1,95 +1,84 @@
 package resp
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-gonic/gin"
+	"net/http"
+)
 
 var (
 	EnLan      = "en"
 	ZhCnLan    = "zhCn"
-	defaultMsg = UnknownError
+	defaultMsg = Success
 )
 
 // SubMsgType 子信息类型
-type subMsgType map[string]string
+type subMsgType map[int]string
 
 const (
-	//基本操作
-	Success           = "Success"
-	UnknownError      = "UnknownError"
-	ParameterError    = "ParameterError"
-	OperationFailed   = "OperationFailed"
-	MissingParameters = "MissingParameters"
+	// 系统
+	Success           = 0
+	UNKNOWNError      = 10000
+	PARAMSTERError    = 10001
+	OperationFailed   = 10002
+	MissingParameters = 10003
+	NOTFound          = 10004
 
 	// 用户
-	UserExists    = "UserExists"
-	UserNotExists = "UserNotExists"
+	UserExists    = 60000
+	UserNotExists = 60001
 
 	//验证
-	PasswordError     = "PasswordError"
-	TokenParsingError = "TokenParsingError"
-	TokenExpire       = "TokenExpire"
-	TokenError        = "TokenError"
-	TokenNotValid     = "tokenNotValid"
+	PasswordError     = 70000
+	TokenParsingError = 70001
+	TokenExpire       = 70002
+	TokenError        = 70003
+	TokenNotValid     = 70004
 
 	// 文件
-	FileUploadFail = "FileUploadFail"
+	FileUploadFail = 20000
 )
 
 // RespBody 响应体
 type Elem struct {
 	Ok   bool
-	Code string
+	Code int
 	Data interface{}
+	Msg  string
 }
 
 // GetMsg 获取响应信息
 func GetMsg(b *Elem, lan string) (response gin.H) {
 	if b.Ok {
-		//成功
-		var (
-			msg   string
-			exist bool
-		)
-		switch lan {
-		case EnLan:
-			msg, exist = En[Success]
-			if !exist {
-				msg = En[defaultMsg]
-			}
-		case ZhCnLan:
-			msg, exist = ZhCn[Success]
-			if !exist {
-				msg = ZhCn[defaultMsg]
-			}
-		default:
-			msg, exist = En[Success]
-			if !exist {
-				msg = En[defaultMsg]
-			}
-		}
-		return gin.H{"code": true, "message": msg, "data": b.Data}
-	} else {
-		//失败
-		var (
-			msg   string
-			exist bool
-		)
-		switch lan {
-		case EnLan:
-			msg, exist = En[b.Code]
-			if !exist {
-				msg = En[defaultMsg]
-			}
-		case ZhCnLan:
-			msg, exist = ZhCn[b.Code]
-			if !exist {
-				msg = ZhCn[defaultMsg]
-			}
-		default:
-			msg, exist = En[b.Code]
-			if !exist {
-				msg = En[defaultMsg]
-			}
-		}
-		return gin.H{"code": false, "message": msg}
+		b.Code = Success
 	}
+	var (
+		msg   string
+		exist bool
+	)
+	switch lan {
+	case ZhCnLan:
+		msg, exist = ZhCn[b.Code]
+		if !exist {
+			msg = ZhCn[defaultMsg]
+		}
+	default:
+		msg, exist = En[b.Code]
+		if !exist {
+			msg = En[defaultMsg]
+		}
+	}
+	if b.Msg != "" {
+		msg = msg + b.Msg
+	}
+	return gin.H{"code": b.Code, "message": msg, "data": b.Data}
+}
+
+func SuccessRep(c *gin.Context, b *Elem) {
+	c.JSON(http.StatusOK, GetMsg(b, c.GetString("lan")))
+	return
+}
+
+func ErrRep(c *gin.Context, b *Elem, HttpCode int) {
+	c.JSON(HttpCode, GetMsg(b, c.GetString("lan")))
+	return
 }
