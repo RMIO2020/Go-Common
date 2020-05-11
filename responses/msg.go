@@ -19,6 +19,7 @@ const (
 	OperationFailed   = "OperationFailed"
 	MissingParameters = "MissingParameters"
 	InternalDataError = "InternalDataError"
+	InvalidOperation  = "Invalid operation"
 
 	// 用户
 	UserExists    = "UserExists"
@@ -33,6 +34,9 @@ const (
 
 	// 文件
 	FileUploadFail = "FileUploadFail"
+
+	// 产品
+	NoProductData = "No product data"
 )
 
 // RespBody 响应体

@@ -7,6 +7,7 @@ var En = subMsgType{
 	ParameterError:    "Parameter error",
 	OperationFailed:   "Operation failed",
 	MissingParameters: "Missing parameters",
+	InvalidOperation:  "Invalid operation",
 
 	//用户
 	UserExists:    "User already exists",
@@ -21,4 +22,7 @@ var En = subMsgType{
 
 	// 文件
 	FileUploadFail: "Upload file error",
+
+	// 产品
+	NoProductData: "No product data",
 }
