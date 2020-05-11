@@ -8,7 +8,7 @@ import (
 var (
 	EnLan      = "en"
 	ZhCnLan    = "zhCn"
-	defaultMsg = Success
+	defaultMsg = UNKNOWNError
 )
 
 // SubMsgType 子信息类型
@@ -22,6 +22,8 @@ const (
 	OperationFailed   = 10002
 	MissingParameters = 10003
 	NOTFound          = 10004
+	InternalDataError = 10005
+	InvalidOperation  = 10006
 
 	// 用户
 	UserExists    = 60000
@@ -36,6 +38,9 @@ const (
 
 	// 文件
 	FileUploadFail = 20000
+
+	// 产品
+	NoProductData = 30000
 )
 
 // RespBody 响应体
