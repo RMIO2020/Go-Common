@@ -8,7 +8,7 @@ import (
 var (
 	EnLan      = "en"
 	ZhCnLan    = "zhCn"
-	defaultMsg = UNKNOWNError
+	defaultMsg = UnknownError
 )
 
 // SubMsgType 子信息类型
@@ -17,8 +17,8 @@ type subMsgType map[int]string
 const (
 	// 系统
 	Success           = 0
-	UNKNOWNError      = 10000
-	PARAMSTERError    = 10001
+	UnknownError      = 10000
+	ParameterError    = 10001
 	OperationFailed   = 10002
 	MissingParameters = 10003
 	NOTFound          = 10004

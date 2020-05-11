@@ -3,8 +3,8 @@ package resp
 var En = subMsgType{
 	//基本操作
 	Success:           "success",
-	UNKNOWNError:      "Unknown error, please contact support",
-	PARAMSTERError:    "Parameter error",
+	UnknownError:      "Unknown error, please contact support",
+	ParameterError:    "Parameter error",
 	OperationFailed:   "Operation failed",
 	MissingParameters: "Missing parameters",
 	InvalidOperation:  "Invalid operation",

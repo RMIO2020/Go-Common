@@ -3,8 +3,8 @@ package resp
 var ZhCn = subMsgType{
 	//基本操作
 	Success:           "成功",
-	UNKNOWNError:      "未知错误，请联系支持",
-	PARAMSTERError:    "参数错误",
+	UnknownError:      "未知错误，请联系支持",
+	ParameterError:    "参数错误",
 	OperationFailed:   "操作失败",
 	MissingParameters: "缺少参数",
 	InvalidOperation:  "无效操作",
