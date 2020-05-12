@@ -73,7 +73,7 @@ func GetMsg(b *Elem, lan string) (response gin.H) {
 		}
 	}
 	if b.Msg != "" {
-		msg = msg + b.Msg
+		msg = msg + " | " + b.Msg
 	}
 	return gin.H{"code": b.Code, "message": msg, "data": b.Data}
 }
