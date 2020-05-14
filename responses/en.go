@@ -14,7 +14,7 @@ var En = subMsgType{
 	UserNotExists: "User does not exist",
 
 	//验证
-	PasswordError:     "Password error",
+	PasswordError:     "Username or Password error",
 	TokenParsingError: "Token parsing error",
 	TokenExpire:       "Token expire",
 	TokenError:        "Token error",

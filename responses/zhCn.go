@@ -14,7 +14,7 @@ var ZhCn = subMsgType{
 	UserNotExists: "用户不存在",
 
 	//验证
-	PasswordError:     "密码错误",
+	PasswordError:     "用户名或密码错误",
 	TokenParsingError: "token解析错误",
 	TokenExpire:       "token过期",
 	TokenError:        "token错误",
