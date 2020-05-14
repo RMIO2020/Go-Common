@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/robfig/cron"
 	"net"
 	"net/http"
 	"os"
@@ -145,7 +144,7 @@ func (s *signalType) forkChild(addr string, ln net.Listener) (*os.Process, error
 	return p, nil
 }
 
-func (s *signalType) waitForSignals(addr string, ln net.Listener, server *http.Server, cron *cron.Cron) error {
+func (s *signalType) waitForSignals(addr string, ln net.Listener, server *http.Server) error {
 	signalCh := make(chan os.Signal, 1024)
 	signal.Notify(signalCh, syscall.SIGHUP, syscall.SIGINT, syscall.SIGQUIT)
 	for {
@@ -154,8 +153,6 @@ func (s *signalType) waitForSignals(addr string, ln net.Listener, server *http.S
 			fmt.Printf("%v signal received.\n", s)
 			switch signalValue {
 			case syscall.SIGHUP:
-				// 定时任务暂停
-				cron.Stop()
 				// Fork a child process.
 				p, err := s.forkChild(addr, ln)
 				if err != nil {
@@ -172,8 +169,6 @@ func (s *signalType) waitForSignals(addr string, ln net.Listener, server *http.S
 				// Return any errors during shutdown.
 				return server.Shutdown(ctx)
 			case syscall.SIGINT, syscall.SIGQUIT:
-				// 定时任务暂停
-				cron.Stop()
 				// Create a context that will expire in 5 seconds and use this as a
 				// timeout to Shutdown.
 				ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
@@ -201,7 +196,7 @@ func (s *signalType) startServer(addr string, ln net.Listener, handle http.Handl
 }
 
 // listen and signal
-func Listen(addr string, handle http.Handler, cron *cron.Cron) error {
+func Listen(addr string, handle http.Handler) error {
 	// Parse command line flags for the address to listen on.
 	var s signalType
 	// Create (or import) a net.Listener and start a goroutine that runs
@@ -213,7 +208,7 @@ func Listen(addr string, handle http.Handler, cron *cron.Cron) error {
 	server := s.startServer(addr, ln, handle)
 
 	// Wait for signals to either fork or quit.
-	err = s.waitForSignals(addr, ln, server, cron)
+	err = s.waitForSignals(addr, ln, server)
 	if err != nil {
 		return errors.New(fmt.Sprintf("Exiting: %v\n", err))
 	}
