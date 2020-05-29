@@ -45,15 +45,16 @@ const (
 
 // RespBody 响应体
 type Elem struct {
-	Ok   bool
-	Code int
-	Data interface{}
-	Msg  string
+	Ok      bool
+	Code    int
+	Data    interface{}
+	Msg     string
+	MsgOver bool
 }
 
 // GetMsg 获取响应信息
 func GetMsg(b *Elem, lan string) (response gin.H) {
-	if b.Ok {
+	if b.Ok && b.Code == 0 {
 		b.Code = Success
 	}
 	var (
@@ -72,8 +73,12 @@ func GetMsg(b *Elem, lan string) (response gin.H) {
 			msg = En[defaultMsg]
 		}
 	}
-	if b.Msg != "" {
-		msg = msg + " | " + b.Msg
+	if b.MsgOver == true {
+		msg = b.Msg
+	} else {
+		if b.Msg != "" {
+			msg = msg + " | " + b.Msg
+		}
 	}
 	return gin.H{"code": b.Code, "message": msg, "data": b.Data}
 }
