@@ -8,6 +8,7 @@ var En = subMsgType{
 	OperationFailed:   "Operation failed",
 	MissingParameters: "Missing parameters",
 	InvalidOperation:  "Invalid operation",
+	UserNotAuthorize:  "User is not authorized",
 
 	//用户
 	UserExists:    "User already exists",

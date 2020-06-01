@@ -24,6 +24,7 @@ const (
 	NOTFound          = 10004
 	InternalDataError = 10005
 	InvalidOperation  = 10006
+	UserNotAuthorize  = 10050
 
 	// 用户
 	UserExists    = 60000
