@@ -13,6 +13,7 @@ var ZhCn = subMsgType{
 	//用户
 	UserExists:    "用户已存在",
 	UserNotExists: "用户不存在",
+	LackBalance:   "余额不足",
 
 	//验证
 	PasswordError:     "用户名或密码错误",

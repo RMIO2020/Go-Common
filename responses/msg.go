@@ -26,9 +26,16 @@ const (
 	InvalidOperation  = 10006
 	UserNotAuthorize  = -10050
 
+	// 文件
+	FileUploadFail = 20000
+
+	// 产品
+	NoProductData = 30000
+
 	// 用户
 	UserExists    = 60000
 	UserNotExists = 60001
+	LackBalance   = 60002
 
 	//验证
 	PasswordError     = 70000
@@ -36,12 +43,6 @@ const (
 	TokenExpire       = 70002
 	TokenError        = 70003
 	TokenNotValid     = 70004
-
-	// 文件
-	FileUploadFail = 20000
-
-	// 产品
-	NoProductData = 30000
 )
 
 // RespBody 响应体

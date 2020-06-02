@@ -13,6 +13,7 @@ var En = subMsgType{
 	//用户
 	UserExists:    "User already exists",
 	UserNotExists: "User does not exist",
+	LackBalance:   "Insufficient balance",
 
 	//验证
 	PasswordError:     "Username or Password error",
