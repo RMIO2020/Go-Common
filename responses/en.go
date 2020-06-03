@@ -20,7 +20,8 @@ var En = subMsgType{
 	TokenParsingError: "Token parsing error",
 	TokenExpire:       "Token expire",
 	TokenError:        "Token error",
-	TokenNotValid:     "token is not valid",
+	TokenNotValid:     "Token is not valid",
+	GoogleCodeError:   "Google code error",
 
 	// 文件
 	FileUploadFail: "Upload file error",

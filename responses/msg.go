@@ -43,6 +43,7 @@ const (
 	TokenExpire       = 70002
 	TokenError        = 70003
 	TokenNotValid     = 70004
+	GoogleCodeError   = 70005
 )
 
 // RespBody 响应体
