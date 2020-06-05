@@ -12,17 +12,17 @@ CREATE TABLE `wallet_recharge` (
   `amount` decimal(15,8) NOT NULL DEFAULT 0.00000000 COMMENT '充值数量',
   `txid` varchar(100) NOT NULL DEFAULT '' COMMENT '该笔充值 hash 值',
   `block_hash` varchar(100) NOT NULL DEFAULT '' COMMENT 'block hash 值',
-  `txs_n_tx` int(11) NOT NULL DEFAULT 0 COMMENT '该笔充值确认数',
+  `confirm` int(11) NOT NULL DEFAULT 0 COMMENT '该笔充值确认数',
   `recharge_time` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '充值时间',
-  `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '充值状态（1、待确认，2、充值成功，3、充值失败',
+  `status` enum('confirm','success','failure') NOT NULL DEFAULT 'confirm' COMMENT '充值状态',
   `create_time` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '创建时间',
   `creator` varchar(20) NOT NULL DEFAULT '' COMMENT '创建人',
   `edit_time` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '修改时间',
   `edit_or` varchar(20) NOT NULL DEFAULT '' COMMENT '修改人',
-  `show_status` tinyint(1) NOT NULL DEFAULT 1 COMMENT '显示状态 1前后端显示 2 前端显示 3后端显示',
-  `platform` varchar(200) NOT NULL DEFAULT 1 COMMENT '平台',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='钱包充值';
+  `platform` varchar(200) NOT NULL DEFAULT '' COMMENT '平台',
+  PRIMARY KEY (`id`),
+  unique key `txid` (`txid`,`recharge_address`,`memo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='充值';
 
 
 
@@ -40,13 +40,14 @@ CREATE TABLE `wallet_withdraw` (
   `txid` varchar(200) NOT NULL DEFAULT '' COMMENT '交易id',
   `order_no` varchar(200) NOT NULL DEFAULT '' COMMENT '交易id',
   `miner_fee` decimal(15,8) NOT NULL DEFAULT 0.00000000 COMMENT '矿工费',
-  `audit` tinyint(4) NOT NULL DEFAULT 1 COMMENT '审核状态（1，待审核 2，审核通过 3，审核失败）',
-  `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '提现状态（1、待审核，2、提现中，3、提现成功，4、提现失败',
+  `audit` enum('wait','success','failure') NOT NULL DEFAULT 'wait' COMMENT '审核状态',
+  `status` enum('wait','confirm','success','failure') NOT NULL DEFAULT 'wait' COMMENT '提现状态',
   `create_time` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '创建时间',
   `creator` varchar(20) NOT NULL DEFAULT '' COMMENT '创建人',
   `edit_time` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '修改时间',
   `edit_or` varchar(20) NOT NULL DEFAULT '' COMMENT '修改人',
   `remarks` varchar(200) NOT NULL DEFAULT '' COMMENT '备注：最后一次对此提币操作的备注记录',
+  `platform` varchar(200) NOT NULL DEFAULT '' COMMENT '平台',
   PRIMARY KEY (`id`),
-  KEY `idx_edit_time` (`edit_time`)
-) ENGINE=InnoDB AUTO_INCREMENT=799 DEFAULT CHARSET=utf8 COMMENT='钱包提现记录表';
+  unique key `txid` (`txid`,`withdraw_address`,`memo`)
+) ENGINE=InnoDB AUTO_INCREMENT=799 DEFAULT CHARSET=utf8 COMMENT='提币';

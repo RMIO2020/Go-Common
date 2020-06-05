@@ -13,6 +13,7 @@ CREATE TABLE `wallet` (
   `editor` varchar(20) NOT NULL DEFAULT '' COMMENT '更新者',
   `create_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '添加时间',
   `update_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '更新时间',
+  `platform` varchar(200) NOT NULL DEFAULT '' COMMENT '平台',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户钱包表';
 
