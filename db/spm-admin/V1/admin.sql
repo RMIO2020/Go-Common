@@ -29,29 +29,6 @@ CREATE TABLE `sup_admin_role` (
   KEY `system_user_id` (`admin_id`,`role_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COMMENT='账户和角色关联表';
 
-CREATE TABLE `sup_menu` (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `name` varchar(100) NOT NULL DEFAULT '' COMMENT '名称',
-  `path` varchar(50) NOT NULL DEFAULT '' COMMENT '路径',
-  `component` varchar(100) NOT NULL DEFAULT '' COMMENT '组件',
-  `redirect` varchar(200) NOT NULL DEFAULT '' COMMENT '重定向',
-  `url` varchar(200) NOT NULL DEFAULT '' COMMENT '访问url',
-  `meta_title` varchar(50) NOT NULL DEFAULT '' COMMENT 'meta标题',
-  `meta_icon` varchar(50) NOT NULL DEFAULT '' COMMENT 'meta icon',
-  `meta_nocache` tinyint(4) NOT NULL DEFAULT 0 COMMENT '是否缓存（1:是 0:否）',
-  `alwaysshow` tinyint(4) NOT NULL DEFAULT 0 COMMENT '是否总是显示（1:是0：否）',
-  `meta_affix` tinyint(4) NOT NULL DEFAULT 0 COMMENT '是否加固（1:是0：否）',
-  `type` tinyint(4) NOT NULL DEFAULT 2 COMMENT '类型(1:固定,2:权限配置3特殊)',
-  `hidden` tinyint(4) NOT NULL DEFAULT 0 COMMENT '是否隐藏（0否1是）',
-  `pid` int(11) NOT NULL DEFAULT 0 COMMENT '父ID',
-  `sort` int(11) NOT NULL DEFAULT 0 COMMENT '排序',
-  `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '状态（0禁止1启动）',
-  `level` tinyint(4) NOT NULL DEFAULT 0 COMMENT '层级',
-  `c_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '时间',
-  PRIMARY KEY (`id`),
-  KEY `idx_list` (`pid`,`sort`,`status`) USING BTREE,
-  KEY `path` (`path`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COMMENT='菜单';
 
 CREATE TABLE `sup_role` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
