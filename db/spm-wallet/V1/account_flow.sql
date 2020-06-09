@@ -51,3 +51,13 @@ CREATE TABLE `wallet_withdraw` (
   PRIMARY KEY (`id`),
   unique key `txid` (`txid`,`withdraw_address`,`memo`)
 ) ENGINE=InnoDB AUTO_INCREMENT=799 DEFAULT CHARSET=utf8 COMMENT='提币';
+
+
+
+CREATE TABLE `wallet_push_data` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `data` text DEFAULT null COMMENT '',
+  `create_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '添加时间',
+  `edit_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COMMENT='地址库';
