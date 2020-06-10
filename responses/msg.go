@@ -95,3 +95,27 @@ func ErrRep(c *gin.Context, b *Elem, HttpCode int) {
 	c.JSON(HttpCode, GetMsg(b, c.GetString("lan")))
 	return
 }
+
+func GetMsgStr(b *Elem, lan string) (msg string) {
+	var exist bool
+	switch lan {
+	case ZhCnLan:
+		msg, exist = ZhCn[b.Code]
+		if !exist {
+			msg = ZhCn[defaultMsg]
+		}
+	default:
+		msg, exist = En[b.Code]
+		if !exist {
+			msg = En[defaultMsg]
+		}
+	}
+	if b.MsgOver == true {
+		msg = b.Msg
+	} else {
+		if b.Msg != "" {
+			msg = msg + " | " + b.Msg
+		}
+	}
+	return
+}
