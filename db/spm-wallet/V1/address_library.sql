@@ -1,7 +1,7 @@
 CREATE TABLE `address_library` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` varchar(64) NOT NULL DEFAULT '' COMMENT '用户id',
-  `currency` enum('BTC','ETH') NOT NULL DEFAULT 'BTC' COMMENT '币种',
+  `currency` enum('BTC','ETH','USDT') NOT NULL DEFAULT 'BTC' COMMENT '币种',
   `protocol` enum('','ERC20') NOT NULL DEFAULT '' COMMENT '协议',
   `status` enum('normal','abnormal','binding') NOT NULL DEFAULT 'normal' COMMENT '状态',
   `address` varchar(300) NOT NULL DEFAULT '' COMMENT '地址',
@@ -13,4 +13,4 @@ CREATE TABLE `address_library` (
   `platform` varchar(200) NOT NULL DEFAULT '' COMMENT '平台',
   PRIMARY KEY (`id`),
   UNIQUE KEY `address` (`address`,`currency`,`protocol`,`platform`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COMMENT='地址库';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COMMENT='地址库.';
