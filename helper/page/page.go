@@ -6,8 +6,8 @@ import (
 )
 
 type Data struct {
-	Page      int `json:"page"`
-	PageSize  int `json:"page_size"`
+	Page      int `json:"page" form:"page"`
+	PageSize  int `json:"page_size" form:"page_size"`
 	Count     int `json:"count"`
 	TotalPage int `json:"total_page"`
 	Offset    int `json:"-"`
@@ -15,7 +15,7 @@ type Data struct {
 
 func GetPageParams(c *gin.Context) *Data {
 	var params Data
-	_ = c.ShouldBindJSON(&params)
+	_ = c.BindQuery(&params)
 
 	if params.Page <= 0 {
 		params.Page = 1
@@ -29,6 +29,9 @@ func GetPageParams(c *gin.Context) *Data {
 
 func SetPageData(Page, PageSize, Count int) *Data {
 	TotalPage := math.Ceil(float64(Count / PageSize))
+	if TotalPage < 1 {
+		TotalPage = 1
+	}
 	return &Data{
 		Page:      Page,
 		PageSize:  PageSize,
