@@ -6,11 +6,11 @@ import (
 )
 
 type Data struct {
-	Page      int `json:"page" from:"default=1"`
-	PageSize  int `json:"page_size" from:"default=10"`
+	Page      int `json:"page"`
+	PageSize  int `json:"page_size"`
 	Count     int `json:"count"`
 	TotalPage int `json:"total_page"`
-	Offset    int `json:"-" from:"default=0"`
+	Offset    int `json:"-"`
 }
 
 func GetPageParams(c *gin.Context) *Data {
@@ -19,6 +19,9 @@ func GetPageParams(c *gin.Context) *Data {
 
 	if params.Page <= 0 {
 		params.Page = 1
+	}
+	if params.PageSize <= 0 {
+		params.PageSize = 10
 	}
 	params.Offset = (params.Page - 1) * params.PageSize
 	return &params
