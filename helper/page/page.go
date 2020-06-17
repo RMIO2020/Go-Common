@@ -1,6 +1,9 @@
 package page
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-gonic/gin"
+	"math"
+)
 
 type Data struct {
 	Page      int `json:"page" from:"default=1"`
@@ -22,10 +25,11 @@ func GetPageParams(c *gin.Context) *Data {
 }
 
 func SetPageData(Page, PageSize, Count int) *Data {
+	TotalPage := math.Ceil(float64(Count / Page))
 	return &Data{
 		Page:      Page,
 		PageSize:  PageSize,
 		Count:     Count,
-		TotalPage: Count / Page,
+		TotalPage: int(TotalPage),
 	}
 }
