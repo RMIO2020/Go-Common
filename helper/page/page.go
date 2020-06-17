@@ -28,7 +28,7 @@ func GetPageParams(c *gin.Context) *Data {
 }
 
 func SetPageData(Page, PageSize, Count int) *Data {
-	TotalPage := math.Ceil(float64(Count / Page))
+	TotalPage := math.Ceil(float64(Count / PageSize))
 	return &Data{
 		Page:      Page,
 		PageSize:  PageSize,
