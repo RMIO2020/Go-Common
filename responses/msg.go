@@ -25,6 +25,7 @@ const (
 	InternalDataError = 10005
 	InvalidOperation  = 10006
 	UserNotAuthorize  = -10050
+	FrequencyTooFast  = 10007
 
 	// 文件
 	FileUploadFail = 20000
