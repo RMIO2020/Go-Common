@@ -25,6 +25,7 @@ var En = subMsgType{
 	TokenError:        "Token error",
 	TokenNotValid:     "Token is not valid",
 	GoogleCodeError:   "Google code error",
+	PasswordNotSet:    "Password is not set",
 
 	// 文件
 	FileUploadFail: "Upload file error",
