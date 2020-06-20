@@ -9,6 +9,7 @@ var ZhCn = subMsgType{
 	MissingParameters: "缺少参数",
 	InvalidOperation:  "无效操作",
 	UserNotAuthorize:  "用户未授权",
+	FrequencyTooFast:  "频率过快",
 
 	//用户
 	UserExists:    "用户已存在",

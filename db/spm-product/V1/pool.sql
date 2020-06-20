@@ -1,0 +1,20 @@
+CREATE TABLE `pool` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `pool_name_en` varchar(256) NOT NULL DEFAULT '' COMMENT '算力池名称（英文）',
+  `pool_name_zhCn` varchar(256) NOT NULL DEFAULT '' COMMENT '算力池名称（中文）',
+  `machine_name` varchar(256) NOT NULL DEFAULT '' COMMENT '矿机名称',
+  `machine_power` decimal(15,2) NOT NULL DEFAULT '0.00' COMMENT '矿机功率',
+  `management_fee_rate` decimal(15,2) NOT NULL DEFAULT '0.00' COMMENT '管理费',
+  `electricity_price` decimal(15,4) NOT NULL DEFAULT '0.0000' COMMENT '电费单价',
+  `power_unit` decimal(15,4) NOT NULL DEFAULT '0.0000' COMMENT '算力池算力数（T）',
+  `consume` decimal(15,4) NOT NULL DEFAULT '0.0000' COMMENT '消耗数',
+  `stock` int(11) NOT NULL DEFAULT '0' COMMENT '总库存（T数）',
+  `explanation_en` text NOT NULL COMMENT '说明（英文）',
+  `explanation_zhCn` text NOT NULL COMMENT '说明（中文）',
+  `rank` int(11) NOT NULL DEFAULT '0' COMMENT '排序权重',
+  `status` enum('CLOSE','OPEN') NOT NULL DEFAULT 'OPEN' COMMENT '状态',
+  `updatedBy` varchar(512) NOT NULL DEFAULT '' COMMENT '更新信息',
+  `create_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '添加时间',
+  `update_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='产品表';

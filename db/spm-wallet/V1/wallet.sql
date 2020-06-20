@@ -1,7 +1,7 @@
 CREATE TABLE `wallet` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` varchar(64) NOT NULL DEFAULT '' COMMENT '用户id',
-  `currency` enum('BTC','ETH') NOT NULL DEFAULT 'BTC' COMMENT '币种',
+  `currency` enum('BTC','ETH','USDT') NOT NULL DEFAULT 'BTC' COMMENT '币种',
   `protocol` enum('','ERC20') NOT NULL DEFAULT '' COMMENT '协议',
   `total_amount` decimal(15,8) NOT NULL DEFAULT 0.00000000 COMMENT '账户总额',
   `available_amount` decimal(15,8) NOT NULL DEFAULT 0.00000000 COMMENT '可用余额',

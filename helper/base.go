@@ -1,6 +1,9 @@
 package helper
 
 import (
+	"encoding/base64"
+	"fmt"
+	"github.com/skip2/go-qrcode"
 	"math"
 	"math/rand"
 	"os"
@@ -64,4 +67,19 @@ func GetDaysInYearByThisYear() int {
 		total = total + d
 	}
 	return total
+}
+
+func CreateQrCodeBase64(params string) (encoded string, err error) {
+	q, err := qrcode.New(fmt.Sprintf(params), qrcode.Medium)
+	if err != nil {
+		return
+	}
+	// Optionally, disable the QR Code border.
+	q.DisableBorder = true
+	png, err := q.PNG(256)
+	if err != nil {
+		return
+	}
+	encoded = fmt.Sprintf("data:image/jpg;base64,%v", base64.StdEncoding.EncodeToString(png))
+	return
 }
