@@ -10,6 +10,8 @@ var ZhCn = subMsgType{
 	InvalidOperation:  "无效操作",
 	UserNotAuthorize:  "用户未授权",
 	FrequencyTooFast:  "频率过快",
+	DataAlreadyExists: "数据已存在",
+	DataDoesNotExist:  "数据不存在",
 
 	//用户
 	UserExists:    "用户已存在",
@@ -29,4 +31,7 @@ var ZhCn = subMsgType{
 
 	// 产品
 	NoProductData: "没有该产品数据",
+
+	// 订单
+	OrderTimeOut: "订单超时",
 }

@@ -3,7 +3,7 @@
 ***/
 CREATE TABLE `wallet_recharge` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` char(60) DEFAULT NULL,
+  `user_id` varchar(64) NOT NULL DEFAULT '' COMMENT '用户id',
   `wallet_id` int(11) NOT NULL COMMENT '钱包id',
   `currency` enum('BTC','ETH','USDT') NOT NULL DEFAULT 'BTC' COMMENT '币种',
   `protocol` enum('','ERC20') NOT NULL DEFAULT '' COMMENT '协议',
@@ -29,7 +29,7 @@ CREATE TABLE `wallet_recharge` (
 
 CREATE TABLE `wallet_withdraw` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` char(60) DEFAULT NULL,
+  `user_id` varchar(64) NOT NULL DEFAULT '' COMMENT '用户id',
   `wallet_id` int(11) NOT NULL COMMENT '钱包id',
   `currency` enum('BTC','ETH','USDT') NOT NULL DEFAULT 'BTC' COMMENT '币种',
   `protocol` enum('','ERC20') NOT NULL DEFAULT '' COMMENT '协议',

@@ -26,6 +26,8 @@ const (
 	InvalidOperation  = 10006
 	UserNotAuthorize  = -10050
 	FrequencyTooFast  = 10007
+	DataAlreadyExists = 10008
+	DataDoesNotExist  = 10009
 
 	// 文件
 	FileUploadFail = 20000
@@ -45,6 +47,9 @@ const (
 	TokenError        = 70003
 	TokenNotValid     = 70004
 	GoogleCodeError   = 70005
+
+	//订单
+	OrderTimeOut = 80000
 )
 
 // RespBody 响应体

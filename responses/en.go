@@ -10,6 +10,8 @@ var En = subMsgType{
 	InvalidOperation:  "Invalid operation",
 	UserNotAuthorize:  "User is not authorized",
 	FrequencyTooFast:  "Frequency too fast",
+	DataAlreadyExists: "Data already exists",
+	DataDoesNotExist:  "Data does not exist",
 
 	//用户
 	UserExists:    "User already exists",
@@ -29,4 +31,7 @@ var En = subMsgType{
 
 	// 产品
 	NoProductData: "No product data",
+
+	// 订单
+	OrderTimeOut: "Order timeout",
 }
