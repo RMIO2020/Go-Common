@@ -44,6 +44,7 @@ const (
 	TokenError        = 70003
 	TokenNotValid     = 70004
 	GoogleCodeError   = 70005
+	PasswordNotSet    = 70006
 )
 
 // RespBody 响应体
