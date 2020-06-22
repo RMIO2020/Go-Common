@@ -2,7 +2,7 @@ package cache
 
 import (
 	"errors"
-	resp "github.com/RMIO2020/Go-Wallet-Service/common/responses"
+	resp "github.com/RMIO2020/Go-Common/responses"
 	"github.com/go-redis/redis"
 	"time"
 )
