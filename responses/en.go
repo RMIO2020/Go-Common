@@ -31,7 +31,8 @@ var En = subMsgType{
 	FileUploadFail: "Upload file error",
 
 	// 产品
-	NoProductData: "No product data",
+	NoProductData:     "No product data",
+	InventoryShortage: "Inventory shortage",
 
 	// 订单
 	OrderTimeOut: "Order timeout",
