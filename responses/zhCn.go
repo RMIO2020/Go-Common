@@ -31,7 +31,8 @@ var ZhCn = subMsgType{
 	FileUploadFail: "文件上传失败",
 
 	// 产品
-	NoProductData: "没有该产品数据",
+	NoProductData:     "没有该产品数据",
+	InventoryShortage: "库存不足",
 
 	// 订单
 	OrderTimeOut: "订单超时",

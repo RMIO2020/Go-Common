@@ -34,7 +34,8 @@ const (
 	FileUploadFail = 20000
 
 	// 产品
-	NoProductData = 30000
+	NoProductData     = 30000
+	InventoryShortage = 30001
 
 	// 用户
 	UserExists    = 60000
