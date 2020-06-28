@@ -21,29 +21,29 @@ import (
 	"fmt"
 
 	"github.com/yuchenfw/gocrypt"
+	grsa "github.com/yuchenfw/gocrypt/rsa"
 )
 
-type rsaCrypt struct {
-	secretInfo Secret
-}
+var RSA *Crypt
 
-type Secret struct {
-	PublicKey          string
-	PublicKeyDataType  gocrypt.Encode
-	PrivateKey         string
-	PrivateKeyDataType gocrypt.Encode
-	PrivateKeyType     gocrypt.Secret
+type Crypt struct {
+	secretInfo grsa.RSASecret
 }
 
 //NewRSACrypt init with the RSA secret info
-func NewRSACrypt(secretInfo Secret) *rsaCrypt {
-	return &rsaCrypt{secretInfo: secretInfo}
+func NewRSACrypt() *Crypt {
+	return RSA
+}
+
+func InitTRSACrypt(secretInfo grsa.RSASecret) *Crypt {
+	RSA = &Crypt{secretInfo: secretInfo}
+	return RSA
 }
 
 //Encrypt encrypts the given message with public key
 //src the original data
 //outputDataType the encode type of encrypted data ,such as Base64,HEX
-func (rc *rsaCrypt) Encrypt(src string, outputDataType gocrypt.Encode) (dst string, err error) {
+func (rc *Crypt) Encrypt(src string, outputDataType gocrypt.Encode) (dst string, err error) {
 	secretInfo := rc.secretInfo
 	if secretInfo.PublicKey == "" {
 		return "", fmt.Errorf("secretInfo PublicKey can't be empty")
@@ -67,7 +67,7 @@ func (rc *rsaCrypt) Encrypt(src string, outputDataType gocrypt.Encode) (dst stri
 //Decrypt decrypts a plaintext using private key
 //src the encrypted data with public key
 //srcType the encode type of encrypted data ,such as Base64,HEX
-func (rc *rsaCrypt) Decrypt(src string, srcType gocrypt.Encode) (dst string, err error) {
+func (rc *Crypt) Decrypt(src string, srcType gocrypt.Encode) (dst string, err error) {
 	secretInfo := rc.secretInfo
 	if secretInfo.PrivateKey == "" {
 		return "", fmt.Errorf("secretInfo PrivateKey can't be empty")
@@ -96,7 +96,7 @@ func (rc *rsaCrypt) Decrypt(src string, srcType gocrypt.Encode) (dst string, err
 //src the original unsigned data
 //hashType the type of hash ,such as MD5,SHA1...
 //outputDataType the encode type of sign data ,such as Base64,HEX
-func (rc *rsaCrypt) Sign(src string, hashType gocrypt.Hash, outputDataType gocrypt.Encode) (dst string, err error) {
+func (rc *Crypt) Sign(src string, hashType gocrypt.Hash, outputDataType gocrypt.Encode) (dst string, err error) {
 	secretInfo := rc.secretInfo
 	if secretInfo.PrivateKey == "" {
 		return "", fmt.Errorf("secretInfo PrivateKey can't be empty")
@@ -125,7 +125,7 @@ func (rc *rsaCrypt) Sign(src string, hashType gocrypt.Hash, outputDataType gocry
 //signedData the data signed with private key
 //hashType the type of hash ,such as MD5,SHA1...
 //signDataType the encode type of sign data ,such as Base64,HEX
-func (rc *rsaCrypt) VerifySign(src string, hashType gocrypt.Hash, signedData string, signDataType gocrypt.Encode) (bool, error) {
+func (rc *Crypt) VerifySign(src string, hashType gocrypt.Hash, signedData string, signDataType gocrypt.Encode) (bool, error) {
 	secretInfo := rc.secretInfo
 	if secretInfo.PublicKey == "" {
 		return false, fmt.Errorf("secretInfo PublicKey can't be empty")

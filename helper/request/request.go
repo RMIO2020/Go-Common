@@ -35,6 +35,7 @@ func SortParams(params ReqParams) string {
 func Request(method string, path string, params ReqParams) (result string, err error) {
 	client := &http.Client{}
 	sorted := SortParams(params)
+	fmt.Printf("sorted is %+v \n", sorted)
 	var req *http.Request
 	if method == POST {
 		req, _ = http.NewRequest(method, path, strings.NewReader(sorted))
