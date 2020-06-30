@@ -11,6 +11,7 @@ import (
 
 const (
 	POST = "POST"
+	GET  = "GET"
 )
 
 type ReqParams map[string]string
@@ -46,7 +47,6 @@ func Request(method string, path string, params ReqParams) (result string, err e
 
 	fmt.Println("Client Do......")
 	resp, err := client.Do(req)
-	fmt.Println("resp is", resp)
 	if err != nil {
 		return
 	}
