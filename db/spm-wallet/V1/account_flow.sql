@@ -20,7 +20,7 @@ CREATE TABLE `wallet_recharge` (
   `creator` varchar(20) NOT NULL DEFAULT '' COMMENT '创建人',
   `edit_time` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '修改时间',
   `editor` varchar(20) NOT NULL DEFAULT '' COMMENT '修改人',
-  `platform` varchar(200) NOT NULL DEFAULT '' COMMENT '平台',
+  `platform` enum('','spm-min','pin-min') NOT NULL DEFAULT '' COMMENT '平台',
   PRIMARY KEY (`id`),
   unique key `txid` (`txid`,`recharge_address`,`memo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='充值';
@@ -49,7 +49,7 @@ CREATE TABLE `wallet_withdraw` (
   `edit_time` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '修改时间',
   `editor` varchar(20) NOT NULL DEFAULT '' COMMENT '修改人',
   `remarks` varchar(200) NOT NULL DEFAULT '' COMMENT '备注：最后一次对此提币操作的备注记录',
-  `platform` varchar(200) NOT NULL DEFAULT '' COMMENT '平台',
+  `platform` enum('','spm-min','pin-min') NOT NULL DEFAULT '' COMMENT '平台',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=799 DEFAULT CHARSET=utf8 COMMENT='提币';
 

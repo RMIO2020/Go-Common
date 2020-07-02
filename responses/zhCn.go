@@ -13,6 +13,7 @@ var ZhCn = subMsgType{
 	DataAlreadyExists:    "数据已存在",
 	DataDoesNotExist:     "数据不存在",
 	CurrencyNotSupported: "暂不支持该币种支付",
+	PayOrderRepeat:       "订单已付款,请勿重复支付",
 
 	//用户
 	UserExists:    "用户已存在",
@@ -26,6 +27,7 @@ var ZhCn = subMsgType{
 	TokenError:        "token错误",
 	TokenNotValid:     "token未生效",
 	GoogleCodeError:   "谷歌验证码错误",
+	PayAmountErr:      "支付金额有误",
 
 	// 文件
 	FileUploadFail: "文件上传失败",

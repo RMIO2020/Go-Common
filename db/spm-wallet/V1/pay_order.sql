@@ -16,7 +16,7 @@ CREATE TABLE `pay_order` (
   `pay_protocol` enum('','ERC20') NOT NULL DEFAULT '' COMMENT '协议',
   `create_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '添加时间',
   `update_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '更新时间',
-  `platform` varchar(200) NOT NULL DEFAULT '' COMMENT '平台',
+  `platform` enum('','spm-min','pin-min') NOT NULL DEFAULT '' COMMENT '平台',
   PRIMARY KEY (`id`),
   UNIQUE KEY `order_no` (`order_no`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='支付单';

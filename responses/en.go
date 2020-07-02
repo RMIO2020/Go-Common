@@ -13,6 +13,7 @@ var En = subMsgType{
 	DataAlreadyExists:    "Data already exists",
 	DataDoesNotExist:     "Data does not exist",
 	CurrencyNotSupported: "Currency not supported",
+	PayOrderRepeat:       "Order has been paid, please do not repeat payment",
 
 	//用户
 	UserExists:    "User already exists",
@@ -27,6 +28,7 @@ var En = subMsgType{
 	TokenNotValid:     "Token is not valid",
 	GoogleCodeError:   "Google code error",
 	PasswordNotSet:    "Password is not set",
+	PayAmountErr:      "Incorrect payment amount",
 
 	// 文件
 	FileUploadFail: "Upload file error",

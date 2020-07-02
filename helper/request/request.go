@@ -12,6 +12,7 @@ import (
 const (
 	POST = "POST"
 	GET  = "GET"
+	PUT  = "PUT"
 )
 
 type ReqParams map[string]string

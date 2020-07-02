@@ -29,6 +29,7 @@ const (
 	DataAlreadyExists    = 10008
 	DataDoesNotExist     = 10009
 	CurrencyNotSupported = 10010
+	PayOrderRepeat       = 10011
 
 	// 文件
 	FileUploadFail = 20000
@@ -50,6 +51,7 @@ const (
 	TokenNotValid     = 70004
 	GoogleCodeError   = 70005
 	PasswordNotSet    = 70006
+	PayAmountErr      = 70007
 
 	//订单
 	OrderTimeOut = 80000
