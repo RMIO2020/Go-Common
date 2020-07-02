@@ -54,7 +54,9 @@ const (
 	PayAmountErr      = 70007
 
 	//订单
-	OrderTimeOut = 80000
+	OrderTimeOut    = 80000
+	MinimumQuantity = 80001
+	MaximumQuantity = 80002
 )
 
 // RespBody 响应体
