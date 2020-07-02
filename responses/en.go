@@ -36,5 +36,7 @@ var En = subMsgType{
 	InventoryShortage: "Inventory shortage",
 
 	// 订单
-	OrderTimeOut: "Order timeout",
+	OrderTimeOut:    "Order timeout",
+	MinimumQuantity: "Less than the minimum purchase quantity",
+	MaximumQuantity: "Maximum purchase quantity exceeded",
 }

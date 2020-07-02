@@ -5,7 +5,7 @@ CREATE TABLE `machine` (
   `currency` enum('GRIN','CKB','ZEC','BTC') NOT NULL DEFAULT 'BTC' COMMENT '所属币种',
   `machine_model` varchar(256) NOT NULL DEFAULT '' COMMENT '矿机型号',
   `machine_power` decimal(15,2) NOT NULL DEFAULT '0.00' COMMENT '矿机功率',
-  `machine_consume_power` decimal(15,2) NOT NULL,
+  `machine_consume_power` decimal(15,2) NOT NULL DEFAULT '0.00' COMMENT '矿机功耗',
   `unit` int(11) NOT NULL DEFAULT '0' COMMENT '算力单位',
   `daily_output` decimal(15,2) NOT NULL DEFAULT '0.00' COMMENT '日产值',
   `daily_electricity_fee` decimal(15,2) NOT NULL DEFAULT '0.00' COMMENT '日电费',
