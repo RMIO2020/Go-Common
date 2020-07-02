@@ -16,8 +16,8 @@ CREATE TABLE `order_electricity_user` (
   `pay_type` enum('WECHAT','ALIPAY','VIRTUAL') NOT NULL DEFAULT 'VIRTUAL' COMMENT '支付方式',
   `currency` enum('CNY','USDT') NOT NULL DEFAULT 'CNY' COMMENT '支付币种',
   `pay_status` enum('FAIL','SUCCESS','BEING','WAIT') NOT NULL DEFAULT 'WAIT' COMMENT '支付状态',
-  `pay_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '支付时间',
-  `create_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '添加时间',
-  `update_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '更新时间',
+  `pay_time` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '支付时间',
+  `create_time` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '添加时间',
+  `update_time` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '更新时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='电费单-用户';

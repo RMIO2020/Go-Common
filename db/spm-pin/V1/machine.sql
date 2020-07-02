@@ -12,7 +12,7 @@ CREATE TABLE `machine` (
   `daily_income` decimal(15,2) NOT NULL DEFAULT '0.00' COMMENT '日净收益',
   `introduce` text NOT NULL COMMENT '介绍',
   `status` enum('OPEN','CLOSE') NOT NULL DEFAULT 'OPEN',
-  `create_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '添加时间',
-  `update_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '更新时间',
+  `create_time` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '添加时间',
+  `update_time` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '更新时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='矿机表';
