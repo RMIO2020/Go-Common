@@ -2,16 +2,17 @@ package resp
 
 var En = subMsgType{
 	//基本操作
-	Success:           "success",
-	UnknownError:      "Unknown error, please contact support",
-	ParameterError:    "Parameter error",
-	OperationFailed:   "Operation failed",
-	MissingParameters: "Missing parameters",
-	InvalidOperation:  "Invalid operation",
-	UserNotAuthorize:  "User is not authorized",
-	FrequencyTooFast:  "Frequency too fast",
-	DataAlreadyExists: "Data already exists",
-	DataDoesNotExist:  "Data does not exist",
+	Success:              "success",
+	UnknownError:         "Unknown error, please contact support",
+	ParameterError:       "Parameter error",
+	OperationFailed:      "Operation failed",
+	MissingParameters:    "Missing parameters",
+	InvalidOperation:     "Invalid operation",
+	UserNotAuthorize:     "User is not authorized",
+	FrequencyTooFast:     "Frequency too fast",
+	DataAlreadyExists:    "Data already exists",
+	DataDoesNotExist:     "Data does not exist",
+	CurrencyNotSupported: "Currency not supported",
 
 	//用户
 	UserExists:    "User already exists",
