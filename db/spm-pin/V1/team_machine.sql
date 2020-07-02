@@ -7,6 +7,8 @@ CREATE TABLE `team_machine` (
   `order_num` int(11) NOT NULL DEFAULT '0' COMMENT '下单份数',
   `pay_num` int(11) NOT NULL DEFAULT '0' COMMENT '支付份数',
   `total_num` int(11) NOT NULL DEFAULT '0' COMMENT '矿机总份数',
+  `buy_num_min` int(11) NOT NULL DEFAULT '0' COMMENT '最高购买矿机份数',
+  `buy_num_max` int(11) NOT NULL DEFAULT '0' COMMENT '最高购买矿机份数',
   `electricity_price` decimal(15,2) NOT NULL DEFAULT '0.00' COMMENT '电价',
   `price` decimal(15,2) NOT NULL DEFAULT '0.00' COMMENT '定价',
   `discount` decimal(15,4) NOT NULL DEFAULT '0.0000' COMMENT '折扣',
