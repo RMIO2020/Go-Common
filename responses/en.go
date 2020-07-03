@@ -2,16 +2,18 @@ package resp
 
 var En = subMsgType{
 	//基本操作
-	Success:           "success",
-	UnknownError:      "Unknown error, please contact support",
-	ParameterError:    "Parameter error",
-	OperationFailed:   "Operation failed",
-	MissingParameters: "Missing parameters",
-	InvalidOperation:  "Invalid operation",
-	UserNotAuthorize:  "User is not authorized",
-	FrequencyTooFast:  "Frequency too fast",
-	DataAlreadyExists: "Data already exists",
-	DataDoesNotExist:  "Data does not exist",
+	Success:              "success",
+	UnknownError:         "Unknown error, please contact support",
+	ParameterError:       "Parameter error",
+	OperationFailed:      "Operation failed",
+	MissingParameters:    "Missing parameters",
+	InvalidOperation:     "Invalid operation",
+	UserNotAuthorize:     "User is not authorized",
+	FrequencyTooFast:     "Frequency too fast",
+	DataAlreadyExists:    "Data already exists",
+	DataDoesNotExist:     "Data does not exist",
+	CurrencyNotSupported: "Currency not supported",
+	PayOrderRepeat:       "Order has been paid, please do not repeat payment",
 
 	//用户
 	UserExists:    "User already exists",
@@ -26,13 +28,17 @@ var En = subMsgType{
 	TokenNotValid:     "Token is not valid",
 	GoogleCodeError:   "Google code error",
 	PasswordNotSet:    "Password is not set",
+	PayAmountErr:      "Incorrect payment amount",
 
 	// 文件
 	FileUploadFail: "Upload file error",
 
 	// 产品
-	NoProductData: "No product data",
+	NoProductData:     "No product data",
+	InventoryShortage: "Inventory shortage",
 
 	// 订单
-	OrderTimeOut: "Order timeout",
+	OrderTimeOut:    "Order timeout",
+	MinimumQuantity: "Less than the minimum purchase quantity",
+	MaximumQuantity: "Maximum purchase quantity exceeded",
 }
