@@ -44,15 +44,15 @@ func Request(method string, path string, params ReqParams, ContentType string) (
 	sorted := SortParams(params)
 	fmt.Printf("sorted is %+v \n", sorted)
 	var req *http.Request
-	if method == POST {
+	if method == GET {
+		req, _ = http.NewRequest(method, path+"?"+sorted, strings.NewReader(""))
+	} else {
 		req, _ = http.NewRequest(method, path, strings.NewReader(sorted))
 		if ContentType != "" {
 			req.Header.Add("Content-Type", ContentType)
 		} else {
 			req.Header.Set("Content-Type", ContentTypFormUrl)
 		}
-	} else {
-		req, _ = http.NewRequest(method, path+"?"+sorted, strings.NewReader(""))
 	}
 
 	fmt.Println("Client Do......")
