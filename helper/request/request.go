@@ -15,6 +15,11 @@ const (
 	PUT  = "PUT"
 )
 
+const (
+	ContentTypJson    = "application/json"
+	ContentTypFormUrl = "application/x-www-form-urlencoded"
+)
+
 type ReqParams map[string]string
 
 func SortParams(params ReqParams) string {
@@ -34,14 +39,18 @@ func SortParams(params ReqParams) string {
 	return strings.Join(sorted, "&")
 }
 
-func Request(method string, path string, params ReqParams) (result string, err error) {
+func Request(method string, path string, params ReqParams, ContentType string) (result string, err error) {
 	client := &http.Client{}
 	sorted := SortParams(params)
 	fmt.Printf("sorted is %+v \n", sorted)
 	var req *http.Request
 	if method == POST {
 		req, _ = http.NewRequest(method, path, strings.NewReader(sorted))
-		req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
+		if ContentType != "" {
+			req.Header.Add("Content-Type", ContentType)
+		} else {
+			req.Header.Set("Content-Type", ContentTypFormUrl)
+		}
 	} else {
 		req, _ = http.NewRequest(method, path+"?"+sorted, strings.NewReader(""))
 	}
