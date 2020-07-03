@@ -43,6 +43,7 @@ func Request(method string, path string, params ReqParams, ContentType string) (
 	client := &http.Client{}
 	sorted := SortParams(params)
 	fmt.Printf("sorted is %+v \n", sorted)
+	fmt.Printf("path is %+v \n", path)
 	var req *http.Request
 	if method == GET {
 		req, _ = http.NewRequest(method, path+"?"+sorted, strings.NewReader(""))
@@ -54,6 +55,7 @@ func Request(method string, path string, params ReqParams, ContentType string) (
 			req.Header.Set("Content-Type", ContentTypFormUrl)
 		}
 	}
+	fmt.Printf("req is %+v \n", req)
 
 	fmt.Println("Client Do......")
 	resp, err := client.Do(req)
