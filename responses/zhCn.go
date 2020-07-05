@@ -21,13 +21,14 @@ var ZhCn = subMsgType{
 	LackBalance:   "余额不足",
 
 	//验证
-	PasswordError:     "用户名或密码错误",
-	TokenParsingError: "token解析错误",
-	TokenExpire:       "token过期",
-	TokenError:        "token错误",
-	TokenNotValid:     "token未生效",
-	GoogleCodeError:   "谷歌验证码错误",
-	PayAmountErr:      "支付金额有误",
+	PasswordError:         "用户名或密码错误",
+	TokenParsingError:     "token解析错误",
+	TokenExpire:           "token过期",
+	TokenError:            "token错误",
+	TokenNotValid:         "token未生效",
+	GoogleCodeError:       "谷歌验证码错误",
+	PayAmountErr:          "支付金额有误",
+	VerificationCodeError: "验证码错误",
 
 	// 文件
 	FileUploadFail: "文件上传失败",

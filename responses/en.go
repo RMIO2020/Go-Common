@@ -21,14 +21,15 @@ var En = subMsgType{
 	LackBalance:   "Insufficient balance",
 
 	//验证
-	PasswordError:     "Username or Password error",
-	TokenParsingError: "Token parsing error",
-	TokenExpire:       "Token expire",
-	TokenError:        "Token error",
-	TokenNotValid:     "Token is not valid",
-	GoogleCodeError:   "Google code error",
-	PasswordNotSet:    "Password is not set",
-	PayAmountErr:      "Incorrect payment amount",
+	PasswordError:         "Username or Password error",
+	TokenParsingError:     "Token parsing error",
+	TokenExpire:           "Token expire",
+	TokenError:            "Token error",
+	TokenNotValid:         "Token is not valid",
+	GoogleCodeError:       "Google code error",
+	PasswordNotSet:        "Password is not set",
+	PayAmountErr:          "Incorrect payment amount",
+	VerificationCodeError: "Verification code error",
 
 	// 文件
 	FileUploadFail: "Upload file error",
