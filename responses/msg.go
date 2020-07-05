@@ -30,6 +30,7 @@ const (
 	DataDoesNotExist     = 10009
 	CurrencyNotSupported = 10010
 	PayOrderRepeat       = 10011
+	LackPlatform         = 10012
 
 	// 文件
 	FileUploadFail = 20000

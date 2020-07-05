@@ -14,6 +14,7 @@ var En = subMsgType{
 	DataDoesNotExist:     "Data does not exist",
 	CurrencyNotSupported: "Currency not supported",
 	PayOrderRepeat:       "Order has been paid, please do not repeat payment",
+	LackPlatform:         "Lack of platform",
 
 	//用户
 	UserExists:    "User already exists",
