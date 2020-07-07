@@ -61,7 +61,7 @@ func Request(method string, path string, params ReqParams, ContentType string) (
 	}
 
 	if params["platform"] != "" {
-		req.Header.Add("token", params["platform"])
+		req.Header.Add("platform", params["platform"])
 	}
 
 	fmt.Printf("req is %+v \n", req)
