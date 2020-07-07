@@ -45,6 +45,7 @@ func Request(method string, path string, params ReqParams, ContentType string) (
 	fmt.Printf("sorted is %+v \n", sorted)
 	fmt.Printf("path is %+v \n", path)
 	var req *http.Request
+
 	if method == GET {
 		req, _ = http.NewRequest(method, path+"?"+sorted, strings.NewReader(""))
 	} else {
@@ -55,6 +56,14 @@ func Request(method string, path string, params ReqParams, ContentType string) (
 			req.Header.Set("Content-Type", ContentTypFormUrl)
 		}
 	}
+	if params["token"] != "" {
+		req.Header.Add("token", params["token"])
+	}
+
+	if params["platform"] != "" {
+		req.Header.Add("token", params["platform"])
+	}
+
 	fmt.Printf("req is %+v \n", req)
 
 	fmt.Println("Client Do......")
