@@ -11,6 +11,16 @@ var (
 	defaultMsg = UnknownError
 )
 
+var ThisLan = EnLan
+
+func SetLan(Lan string) {
+	ThisLan = Lan
+}
+
+func GetLan() string {
+	return ThisLan
+}
+
 // SubMsgType 子信息类型
 type subMsgType map[int]string
 

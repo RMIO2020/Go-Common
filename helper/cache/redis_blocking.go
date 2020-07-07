@@ -2,7 +2,7 @@ package cache
 
 import (
 	"errors"
-	resp "github.com/RMIO2020/Go-Common/responses"
+	resp "github.com/RMIO2020/Go-Wallet-Service/common/responses"
 	"github.com/go-redis/redis"
 	"time"
 )
@@ -12,7 +12,7 @@ func BlockingKey(Redis *redis.Client, Key string, expiration time.Duration) (err
 	if val != "" {
 		return errors.New(resp.GetMsgStr(&resp.Elem{
 			Code: resp.FrequencyTooFast,
-		}, resp.EnLan))
+		}, resp.GetLan()))
 	}
 	Redis.Set(Key, "Blocking Key", expiration)
 	return
