@@ -37,6 +37,7 @@ var ZhCn = subMsgType{
 	// 产品
 	NoProductData:     "没有该产品数据",
 	InventoryShortage: "库存不足",
+	OffShelf:          "商品已下架",
 
 	// 订单
 	OrderTimeOut:    "订单超时",
