@@ -14,6 +14,7 @@ var ZhCn = subMsgType{
 	DataDoesNotExist:     "数据不存在",
 	CurrencyNotSupported: "暂不支持该币种支付",
 	PayOrderRepeat:       "订单已付款,请勿重复支付",
+	LackPlatform:         "缺少平台参数",
 
 	//用户
 	UserExists:    "用户已存在",
@@ -21,13 +22,14 @@ var ZhCn = subMsgType{
 	LackBalance:   "余额不足",
 
 	//验证
-	PasswordError:     "用户名或密码错误",
-	TokenParsingError: "token解析错误",
-	TokenExpire:       "token过期",
-	TokenError:        "token错误",
-	TokenNotValid:     "token未生效",
-	GoogleCodeError:   "谷歌验证码错误",
-	PayAmountErr:      "支付金额有误",
+	PasswordError:         "用户名或密码错误",
+	TokenParsingError:     "token解析错误",
+	TokenExpire:           "token过期",
+	TokenError:            "token错误",
+	TokenNotValid:         "token未生效",
+	GoogleCodeError:       "谷歌验证码错误",
+	PayAmountErr:          "支付金额有误",
+	VerificationCodeError: "验证码错误",
 
 	// 文件
 	FileUploadFail: "文件上传失败",

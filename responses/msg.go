@@ -11,6 +11,16 @@ var (
 	defaultMsg = UnknownError
 )
 
+var ThisLan = EnLan
+
+func SetLan(Lan string) {
+	ThisLan = Lan
+}
+
+func GetLan() string {
+	return ThisLan
+}
+
 // SubMsgType 子信息类型
 type subMsgType map[int]string
 
@@ -30,6 +40,7 @@ const (
 	DataDoesNotExist     = 10009
 	CurrencyNotSupported = 10010
 	PayOrderRepeat       = 10011
+	LackPlatform         = 10012
 
 	// 文件
 	FileUploadFail = 20000
@@ -45,14 +56,15 @@ const (
 	LackBalance   = 60002
 
 	//验证
-	PasswordError     = 70000
-	TokenParsingError = 70001
-	TokenExpire       = 70002
-	TokenError        = 70003
-	TokenNotValid     = 70004
-	GoogleCodeError   = 70005
-	PasswordNotSet    = 70006
-	PayAmountErr      = 70007
+	PasswordError         = 70000
+	TokenParsingError     = 70001
+	TokenExpire           = 70002
+	TokenError            = 70003
+	TokenNotValid         = 70004
+	GoogleCodeError       = 70005
+	PasswordNotSet        = 70006
+	PayAmountErr          = 70007
+	VerificationCodeError = 70008
 
 	//订单
 	OrderTimeOut    = 80000
