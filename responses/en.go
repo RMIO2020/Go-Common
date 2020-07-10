@@ -7,6 +7,8 @@ var En = subMsgType{
 	ParameterError:       "Parameter error",
 	OperationFailed:      "Operation failed",
 	MissingParameters:    "Missing parameters",
+	NOTFound:             "not found",
+	InternalDataError:    "internal data error",
 	InvalidOperation:     "Invalid operation",
 	UserNotAuthorize:     "User is not authorized",
 	FrequencyTooFast:     "Frequency too fast",
