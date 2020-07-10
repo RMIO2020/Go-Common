@@ -39,6 +39,7 @@ var En = subMsgType{
 	NoProductData:     "No product data",
 	InventoryShortage: "Inventory shortage",
 	OffShelf:          "Product is no longer available",
+	NotAvailable:      "Not available for purchase",
 
 	// 订单
 	OrderTimeOut:    "Order timeout",

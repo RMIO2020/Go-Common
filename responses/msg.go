@@ -49,6 +49,7 @@ const (
 	NoProductData     = 30000
 	InventoryShortage = 30001
 	OffShelf          = 30002
+	NotAvailable      = 30003
 
 	// 用户
 	UserExists    = 60000
