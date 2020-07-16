@@ -27,6 +27,18 @@ func GetPageParams(c *gin.Context) *Data {
 	return &params
 }
 
+func GetPageParamsNotC(Page, PageSize int) *Data {
+	params := Data{}
+	if Page <= 0 {
+		params.Page = 1
+	}
+	if PageSize <= 0 {
+		params.PageSize = 10
+	}
+	params.Offset = (params.Page - 1) * params.PageSize
+	return &params
+}
+
 func SetPageData(Page, PageSize, Count int) *Data {
 	TotalPage := math.Ceil(float64(Count) / float64(PageSize))
 	if TotalPage < 1 {
