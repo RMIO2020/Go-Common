@@ -7,7 +7,7 @@ CREATE TABLE `income_pool` (
   `date` date NOT NULL DEFAULT '1970-01-01' COMMENT '日期',
   `income` decimal(15,8) NOT NULL DEFAULT '0.00000000' COMMENT '收益',
   `show_status` enum('YES','NO') NOT NULL DEFAULT 'YES' COMMENT '显示状态',
-  `settlement_status` enum('Unsettlement','Settled') NOT NULL DEFAULT 'Unsettlement' COMMENT '结算状态',
+  `settlement_status` enum('UnSettlement','Settled') NOT NULL DEFAULT 'UnSettlement' COMMENT '结算状态',
   `create_time` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '添加时间',
   `update_time` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '更新时间',
   PRIMARY KEY (`id`)
