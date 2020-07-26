@@ -46,4 +46,5 @@ var ZhCn = subMsgType{
 	OrderTimeOut:    "订单超时",
 	MinimumQuantity: "小于过最小购买数量",
 	MaximumQuantity: "超过最大购买数量",
+	NotPayableOrder: "该订单不可支付",
 }

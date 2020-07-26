@@ -47,4 +47,5 @@ var En = subMsgType{
 	OrderTimeOut:    "Order timeout",
 	MinimumQuantity: "Less than the minimum purchase quantity",
 	MaximumQuantity: "Maximum purchase quantity exceeded",
+	NotPayableOrder: "The order is not payable",
 }
