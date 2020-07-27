@@ -71,6 +71,7 @@ const (
 	OrderTimeOut    = 80000
 	MinimumQuantity = 80001
 	MaximumQuantity = 80002
+	NotPayableOrder = 80003
 )
 
 // RespBody 响应体
