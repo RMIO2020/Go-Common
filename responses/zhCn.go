@@ -7,6 +7,8 @@ var ZhCn = subMsgType{
 	ParameterError:       "参数错误",
 	OperationFailed:      "操作失败",
 	MissingParameters:    "缺少参数",
+	NOTFound:             "没有发现",
+	InternalDataError:    "内部数据错误",
 	InvalidOperation:     "无效操作",
 	UserNotAuthorize:     "用户未授权",
 	FrequencyTooFast:     "频率过快",
@@ -44,4 +46,5 @@ var ZhCn = subMsgType{
 	OrderTimeOut:    "订单超时",
 	MinimumQuantity: "小于过最小购买数量",
 	MaximumQuantity: "超过最大购买数量",
+	NotPayableOrder: "该订单不可支付",
 }
