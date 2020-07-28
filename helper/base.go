@@ -74,3 +74,10 @@ func CreatePayOrderNo(Sum int, Platform string) string {
 func CreateOrderSn(Sum int) string {
 	return time.Now().Format("20060102150405") + RandomString(Sum)
 }
+
+func GetYesterday(layout string) (Yesterday string) {
+	N := time.Now()
+	Time := N.AddDate(0, 0, -1)
+	Yesterday = Time.Format(layout)
+	return
+}
