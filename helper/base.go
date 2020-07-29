@@ -68,7 +68,7 @@ func RandomString(n int, allowedChars ...[]rune) string {
 
 func CreatePayOrderNo(Sum int, Platform string) string {
 	str := CreateOrderSn(Sum)
-	return Platform + "-" + str
+	return str
 }
 
 func CreateOrderSn(Sum int) string {
