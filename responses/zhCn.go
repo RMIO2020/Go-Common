@@ -17,6 +17,7 @@ var ZhCn = subMsgType{
 	CurrencyNotSupported: "暂不支持该币种支付",
 	PayOrderRepeat:       "订单已付款,请勿重复支付",
 	LackPlatform:         "缺少平台参数",
+	AmountSmall:          "提币数额太小",
 
 	//用户
 	UserExists:    "用户已存在",
