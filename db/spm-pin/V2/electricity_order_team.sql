@@ -10,6 +10,7 @@ CREATE TABLE `electricity_order_team` (
   `electricity_price` decimal(15,2) NOT NULL DEFAULT '0.00' COMMENT '电费单价',
   `electricity_num` decimal(15,4) NOT NULL DEFAULT '0.0000' COMMENT '电度数',
   `amount` decimal(15,2) NOT NULL DEFAULT '0.00' COMMENT '总金额',
+  `remarks` varchar(1024) NOT NULL DEFAULT '' COMMENT '备注',
   `create_time` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '添加时间',
   `update_time` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '更新时间',
   PRIMARY KEY (`id`)

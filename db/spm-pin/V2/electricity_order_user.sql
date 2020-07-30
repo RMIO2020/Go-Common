@@ -29,6 +29,7 @@ CREATE TABLE `electricity_order_user` (
   `protocol` enum('','ERC20') NOT NULL DEFAULT '' COMMENT '协议',
   `pay_status` enum('FAIL','SUCCESS','BEING','WAIT') NOT NULL DEFAULT 'WAIT' COMMENT '支付状态',
   `pay_time` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '支付时间',
+  `remarks` varchar(1024) NOT NULL DEFAULT '' COMMENT '备注',
   `create_time` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '添加时间',
   `update_time` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '更新时间',
   PRIMARY KEY (`id`)
