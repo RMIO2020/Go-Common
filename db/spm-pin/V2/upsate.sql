@@ -7,3 +7,9 @@ ALTER TABLE `order`
 ADD COLUMN `remarks`  varchar(1024) NOT NULL DEFAULT '' COMMENT '备注' AFTER `refund_time`;
 ALTER TABLE `team_user`
 ADD COLUMN `remarks`  varchar(1024) NOT NULL DEFAULT '' COMMENT '备注' AFTER `cny_amount`;
+
+-- 2020-08-06 增加团收益增加字段
+ALTER TABLE `team`
+ADD COLUMN `income_status`  enum('OFF','ON') NOT NULL DEFAULT 'ON' AFTER `pool_conf`;
+ALTER TABLE `income_pool`
+ADD COLUMN `tx_id`  varchar(512) NOT NULL DEFAULT '' COMMENT '交易id' AFTER `date`;
