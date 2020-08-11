@@ -1,6 +1,7 @@
 package rate
 
 import (
+	"fmt"
 	"github.com/go-redis/redis"
 	"strconv"
 	"strings"
@@ -61,5 +62,7 @@ func GetRateToUSDT(Currency string) (result float64) {
 	if err != nil {
 		result = 0
 	}
+
+	fmt.Println("GetRateToUSDT Currency", Currency, " | rate:", result)
 	return
 }
