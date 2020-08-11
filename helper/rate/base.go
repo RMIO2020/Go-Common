@@ -22,8 +22,10 @@ func CalculationAmountToUSDT(Currency string, Amount float64) (result float64) {
 
 func CalculationAmountUSDTToBTC(Amount float64) (result float64) {
 	rate := GetRateToUSDT("BTC")
-	//result, _ = decimal.NewFromFloat(Amount).Sub(decimal.NewFromFloat(rate)).Float64()
-	result = Amount / rate
+	if rate != 0 {
+		//result, _ = decimal.NewFromFloat(Amount).Sub(decimal.NewFromFloat(rate)).Float64()
+		result = Amount / rate
+	}
 	return
 }
 
