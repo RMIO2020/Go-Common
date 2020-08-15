@@ -9,3 +9,7 @@ ALTER TABLE `income_pool` ADD `currency` varchar(20) NOT NULL DEFAULT '' COMMENT
 
 ALTER TABLE `income_user` ADD `remarks` varchar(500) NOT NULL DEFAULT '' COMMENT '备注';
 ALTER TABLE `income_pool` ADD `remarks` varchar(500) NOT NULL DEFAULT '' COMMENT '备注';
+
+-- 2020-08-06 吴永展-增加收益的交易id
+ALTER TABLE `income_pool`
+ADD COLUMN `tx_id`  varchar(512) NOT NULL DEFAULT '' COMMENT '交易id' AFTER `date`;
