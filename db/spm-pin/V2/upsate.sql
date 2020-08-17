@@ -7,3 +7,4 @@ ALTER TABLE `order`
 ADD COLUMN `remarks`  varchar(1024) NOT NULL DEFAULT '' COMMENT '备注' AFTER `refund_time`;
 ALTER TABLE `team_user`
 ADD COLUMN `remarks`  varchar(1024) NOT NULL DEFAULT '' COMMENT '备注' AFTER `cny_amount`;
+
