@@ -13,3 +13,5 @@ ALTER TABLE `team` ADD COLUMN `daily_electricity_fee` decimal(15,2) NOT NULL DEF
 ALTER TABLE `team` ADD COLUMN `daily_income` decimal(15,2) NOT NULL DEFAULT '0.00' COMMENT '日净收益' AFTER `daily_electricity_fee`;
 ALTER TABLE `team` ADD COLUMN `remarks` varchar(1024) NOT NULL DEFAULT '' COMMENT '备注' AFTER `daily_income`;
 
+-- 2020-08-15 吴永展-增加排序字段
+ALTER TABLE `team` ADD COLUMN `rank` int NOT NULL AFTER `daily_income`;
