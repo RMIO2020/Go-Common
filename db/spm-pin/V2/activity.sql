@@ -34,7 +34,7 @@ CREATE TABLE `activity_machine` (
 
 
 
-/* 拼团 活动 */
+/* 活动用户参与情况 */
 CREATE TABLE `activity_user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` varchar(128) NOT NULL DEFAULT '' COMMENT '用户id',
