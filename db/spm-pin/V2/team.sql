@@ -15,3 +15,6 @@ ALTER TABLE `team` ADD COLUMN `remarks` varchar(1024) NOT NULL DEFAULT '' COMMEN
 
 -- 2020-08-15 吴永展-增加排序字段
 ALTER TABLE `team` ADD COLUMN `rank` int NOT NULL AFTER `daily_income`;
+
+-- 2020-08-18 吴永展-实际矿机数量（实际计算电费与收益）
+ALTER TABLE `team` ADD COLUMN `machine_num`  int NOT NULL DEFAULT 0 COMMENT '实际成团矿机数量' AFTER `show_status`;
