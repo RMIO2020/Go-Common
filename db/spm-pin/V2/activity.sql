@@ -23,6 +23,7 @@ CREATE TABLE `activity_machine` (
   `static_annual_net_income` varchar(100) NOT NULL DEFAULT '' COMMENT '静态年净收入',
   `income_currency` varchar(50) NOT NULL DEFAULT '' COMMENT '收益币种',
   `can_dig_for_time` varchar(100) NOT NULL DEFAULT '' COMMENT '可以挖的时长（文字说明）',
+  `static_payback_cycle` varchar(100) NOT NULL DEFAULT '' COMMENT '静态回本周期（文字说明）',
   `sort` int(11) NOT NULL DEFAULT '0' COMMENT '排序',
   `show_status` enum('yes','no') NOT NULL DEFAULT 'yes' COMMENT '显示状态',
   `status` enum('') NOT NULL DEFAULT '' COMMENT '状态',
