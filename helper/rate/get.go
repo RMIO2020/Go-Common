@@ -26,7 +26,7 @@ func CalculationAmountToCNY(Currency string, Amount float64) (result float64) {
 		result = Amount
 	} else {
 		UAmount := CalculationAmountToUSDT(Currency, Amount)
-		result = UAmount * 7
+		result = UAmount * 6.9
 	}
 	return
 }
@@ -49,7 +49,7 @@ func GetRateToUSDT(Currency string) (result float64) {
 	case "USDT":
 		result = 1
 	case "CNY":
-		result = 0.1429
+		result = 0.14493
 	default:
 		result = 0
 	}
