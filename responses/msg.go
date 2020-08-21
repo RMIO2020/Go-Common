@@ -47,10 +47,11 @@ const (
 	FileUploadFail = 20000
 
 	// 产品
-	NoProductData     = 30000
-	InventoryShortage = 30001
-	OffShelf          = 30002
-	NotAvailable      = 30003
+	NoProductData           = 30000
+	InventoryShortage       = 30001
+	OffShelf                = 30002
+	NotAvailable            = 30003
+	TotalInventoryNotUpdate = 30004
 
 	// 用户
 	UserExists    = 60000
