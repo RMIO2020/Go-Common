@@ -42,6 +42,7 @@ const (
 	PayOrderRepeat       = 10011
 	LackPlatform         = 10012
 	AmountSmall          = 10013
+	CanNotDoThis         = 10014
 
 	// 文件
 	FileUploadFail = 20000

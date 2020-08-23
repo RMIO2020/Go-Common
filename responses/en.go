@@ -18,6 +18,7 @@ var En = subMsgType{
 	PayOrderRepeat:       "Order has been paid, please do not repeat payment",
 	LackPlatform:         "Lack of platform",
 	AmountSmall:          "The withdrawal amount is too small",
+	CanNotDoThis:         "Can't do this",
 
 	//用户
 	UserExists:    "User already exists",

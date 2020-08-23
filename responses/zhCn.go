@@ -18,6 +18,7 @@ var ZhCn = subMsgType{
 	PayOrderRepeat:       "订单已付款,请勿重复支付",
 	LackPlatform:         "缺少平台参数",
 	AmountSmall:          "提币数额太小",
+	CanNotDoThis:         "不能进行此操作",
 
 	//用户
 	UserExists:    "用户已存在",
