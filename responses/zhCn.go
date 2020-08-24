@@ -39,11 +39,13 @@ var ZhCn = subMsgType{
 	FileUploadFail: "文件上传失败",
 
 	// 产品
-	NoProductData:           "没有该产品数据",
-	InventoryShortage:       "库存不足",
-	OffShelf:                "商品已下架",
-	NotAvailable:            "不可购买",
-	TotalInventoryNotUpdate: "下单数量小于矿机总数量则不允许修改",
+	NoProductData:            "没有该产品数据",
+	InventoryShortage:        "库存不足",
+	OffShelf:                 "商品已下架",
+	NotAvailable:             "不可购买",
+	TotalInventoryNotUpdate:  "下单数量小于矿机总数量则不允许修改",
+	LotNumberExists:          "批次号已存在",
+	IncorrectProductQuantity: "产品数量不正确",
 
 	// 订单
 	OrderTimeOut:    "订单超时",

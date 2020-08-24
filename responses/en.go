@@ -40,11 +40,13 @@ var En = subMsgType{
 	FileUploadFail: "Upload file error",
 
 	// 产品
-	NoProductData:           "No product data",
-	InventoryShortage:       "Inventory shortage",
-	OffShelf:                "Product is no longer available",
-	NotAvailable:            "Not available for purchase",
-	TotalInventoryNotUpdate: "The number of orders placed is less than the total number of miners and no modification is allowed",
+	NoProductData:            "No product data",
+	InventoryShortage:        "Inventory shortage",
+	OffShelf:                 "Product is no longer available",
+	NotAvailable:             "Not available for purchase",
+	TotalInventoryNotUpdate:  "The number of orders placed is less than the total number of miners and no modification is allowed",
+	LotNumberExists:          "Lot number already exists",
+	IncorrectProductQuantity: "Incorrect product quantity",
 
 	// 订单
 	OrderTimeOut:    "Order timeout",

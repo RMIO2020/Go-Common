@@ -12,3 +12,6 @@ CREATE TABLE `electricity_late_log` (
   `update_time` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '更新时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='电费滞纳金记录表';
+
+-- 20200824 吴永展 backend开发增加单日产生滞纳金字段
+ALTER TABLE `electricity_late_log` ADD COLUMN `late_fee_today`  decimal(15,2) NOT NULL DEFAULT 0 COMMENT '当日产生滞纳金' AFTER `principal`;
