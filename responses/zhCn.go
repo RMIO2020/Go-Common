@@ -18,6 +18,7 @@ var ZhCn = subMsgType{
 	PayOrderRepeat:       "订单已付款,请勿重复支付",
 	LackPlatform:         "缺少平台参数",
 	AmountSmall:          "提币数额太小",
+	CanNotDoThis:         "不能进行此操作",
 
 	//用户
 	UserExists:    "用户已存在",
@@ -38,10 +39,11 @@ var ZhCn = subMsgType{
 	FileUploadFail: "文件上传失败",
 
 	// 产品
-	NoProductData:     "没有该产品数据",
-	InventoryShortage: "库存不足",
-	OffShelf:          "商品已下架",
-	NotAvailable:      "不可购买",
+	NoProductData:           "没有该产品数据",
+	InventoryShortage:       "库存不足",
+	OffShelf:                "商品已下架",
+	NotAvailable:            "不可购买",
+	TotalInventoryNotUpdate: "下单数量小于矿机总数量则不允许修改",
 
 	// 订单
 	OrderTimeOut:    "订单超时",

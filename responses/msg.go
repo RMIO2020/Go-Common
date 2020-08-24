@@ -42,15 +42,17 @@ const (
 	PayOrderRepeat       = 10011
 	LackPlatform         = 10012
 	AmountSmall          = 10013
+	CanNotDoThis         = 10014
 
 	// 文件
 	FileUploadFail = 20000
 
 	// 产品
-	NoProductData     = 30000
-	InventoryShortage = 30001
-	OffShelf          = 30002
-	NotAvailable      = 30003
+	NoProductData           = 30000
+	InventoryShortage       = 30001
+	OffShelf                = 30002
+	NotAvailable            = 30003
+	TotalInventoryNotUpdate = 30004
 
 	// 用户
 	UserExists    = 60000
