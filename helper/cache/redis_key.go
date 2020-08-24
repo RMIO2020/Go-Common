@@ -12,6 +12,9 @@ const (
 	RegisterPhone  = "SMS_REGISTERED_"       //注册手机验证码
 	RetrieveEmail  = "EMAIl_RETRIEVE_"       //找回密码邮箱验证码
 	RetrievePhone  = "SMS_RETRIEVE_"         //找回密码手机验证码
+
+	IncomeStartT = "Income:Start" //收益开始时间
+	IncomeEndT   = "Income:End"   //收益结束时间
 )
 
 /* 获取支付缓存 Key */
