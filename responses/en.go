@@ -18,6 +18,7 @@ var En = subMsgType{
 	PayOrderRepeat:       "Order has been paid, please do not repeat payment",
 	LackPlatform:         "Lack of platform",
 	AmountSmall:          "The withdrawal amount is too small",
+	CanNotDoThis:         "Can't do this",
 
 	//用户
 	UserExists:    "User already exists",
@@ -39,10 +40,13 @@ var En = subMsgType{
 	FileUploadFail: "Upload file error",
 
 	// 产品
-	NoProductData:     "No product data",
-	InventoryShortage: "Inventory shortage",
-	OffShelf:          "Product is no longer available",
-	NotAvailable:      "Not available for purchase",
+	NoProductData:            "No product data",
+	InventoryShortage:        "Inventory shortage",
+	OffShelf:                 "Product is no longer available",
+	NotAvailable:             "Not available for purchase",
+	TotalInventoryNotUpdate:  "The number of orders placed is less than the total number of miners and no modification is allowed",
+	LotNumberExists:          "Lot number already exists",
+	IncorrectProductQuantity: "Incorrect product quantity",
 
 	// 订单
 	OrderTimeOut:    "Order timeout",
