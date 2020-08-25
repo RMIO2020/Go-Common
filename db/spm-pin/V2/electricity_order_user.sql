@@ -37,3 +37,6 @@ CREATE TABLE `electricity_order_user` (
 
 -- 2020-08-24 吴永展 支付方式增加银行卡转账
 ALTER TABLE `electricity_order_user` MODIFY COLUMN `pay_type`  enum('','WECHAT','ALIPAY','BANK','VIRTUAL') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'VIRTUAL' COMMENT '支付方式' AFTER `status`;
+
+-- 2020-08-24 吴永展 增加支付流水字段
+ALTER TABLE `electricity_order_user` ADD COLUMN `pay_flow`  text NOT NULL AFTER `pay_time`;
