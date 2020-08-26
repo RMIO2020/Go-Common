@@ -46,6 +46,7 @@ var ZhCn = subMsgType{
 	TotalInventoryNotUpdate:  "下单数量小于矿机总数量则不允许修改",
 	LotNumberExists:          "批次号已存在",
 	IncorrectProductQuantity: "产品数量不正确",
+	BillEmptyMachine:         "账单的矿机数量为零",
 
 	// 订单
 	OrderTimeOut:    "订单超时",

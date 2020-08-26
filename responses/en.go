@@ -47,6 +47,7 @@ var En = subMsgType{
 	TotalInventoryNotUpdate:  "The number of orders placed is less than the total number of miners and no modification is allowed",
 	LotNumberExists:          "Lot number already exists",
 	IncorrectProductQuantity: "Incorrect product quantity",
+	BillEmptyMachine:         "The number of miners in the bill is zero",
 
 	// 订单
 	OrderTimeOut:    "Order timeout",
