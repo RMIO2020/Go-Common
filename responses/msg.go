@@ -43,6 +43,7 @@ const (
 	LackPlatform         = 10012
 	AmountSmall          = 10013
 	CanNotDoThis         = 10014
+	UnopenedPlatform     = 10015
 
 	// 文件
 	FileUploadFail = 20000

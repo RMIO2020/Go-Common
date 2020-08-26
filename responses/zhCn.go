@@ -19,6 +19,7 @@ var ZhCn = subMsgType{
 	LackPlatform:         "缺少平台参数",
 	AmountSmall:          "提币数额太小",
 	CanNotDoThis:         "不能进行此操作",
+	UnopenedPlatform:     "未开通的平台",
 
 	//用户
 	UserExists:    "用户已存在",
