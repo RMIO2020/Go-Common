@@ -30,3 +30,6 @@ ALTER TABLE `electricity_order_team` ADD COLUMN `deduction_power_failure`  decim
 ALTER TABLE `electricity_order_team` ADD COLUMN `total_including_circuit_loss`  decimal(15,2) NOT NULL COMMENT '含路损电度总计' AFTER `deduction_power_failure`;
 ALTER TABLE `electricity_order_team` ADD COLUMN `other_fee`  decimal(15,2) NOT NULL DEFAULT 0 COMMENT '其他费用' AFTER `total_including_circuit_loss`;
 ALTER TABLE `electricity_order_team` ADD COLUMN `explain`  varchar(2048) NOT NULL DEFAULT '' COMMENT '说明' AFTER `other_fee`;
+
+-- 2020-08-26 吴永展 backend后台增加字段
+ALTER TABLE `electricity_order_team` ADD COLUMN `electricity_amount`  decimal(15,2) NOT NULL DEFAULT 0 COMMENT '电费合计' AFTER `every_amount`;
