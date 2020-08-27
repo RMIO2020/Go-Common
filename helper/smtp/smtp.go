@@ -12,6 +12,7 @@ type Smtp struct {
 	SendUser  string
 	SendPwd   string
 	ReplyUser string
+	UserName  string
 }
 
 func New() *Smtp {

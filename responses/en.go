@@ -19,6 +19,7 @@ var En = subMsgType{
 	LackPlatform:         "Lack of platform",
 	AmountSmall:          "The withdrawal amount is too small",
 	CanNotDoThis:         "Can't do this",
+	UnopenedPlatform:     "Unopened Platform",
 
 	//用户
 	UserExists:    "User already exists",

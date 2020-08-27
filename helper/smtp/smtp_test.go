@@ -19,7 +19,8 @@ func InitDb() {
 		return
 	}
 
-	Init(vHandle.Config.Email.Host, vHandle.Config.Email.SendUser, vHandle.Config.Email.Password, vHandle.Config.Email.Password)
+	Init(vHandle.Config.Email.Host, vHandle.Config.Email.SendUser, vHandle.Config.Email.Password,
+		vHandle.Config.Email.Password)
 
 }
 
@@ -28,7 +29,7 @@ func TestSmtp_Send(t *testing.T) {
 
 	to := "shiyaojia@rockminer.com"
 
-	err := SMTP.SendToMail(to, "", "test", "")
+	err := SMTP.SendToMail(to, "omg", "test", "html")
 
 	fmt.Println("err", err)
 }
