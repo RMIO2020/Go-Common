@@ -8,6 +8,7 @@ import (
 	"github.com/skip2/go-qrcode"
 	"math/rand"
 	"os"
+	"regexp"
 	"time"
 )
 
@@ -87,4 +88,10 @@ func TimeSub(t1, t2 time.Time) int {
 	t2 = time.Date(t2.Year(), t2.Month(), t2.Day(), 0, 0, 0, 0, time.Local)
 
 	return int(t1.Sub(t2).Hours() / 24)
+}
+
+func IsEmail(str string) bool {
+	pattern := `\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*`
+	reg := regexp.MustCompile(pattern)
+	return reg.MatchString(str)
 }

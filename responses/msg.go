@@ -44,6 +44,7 @@ const (
 	AmountSmall          = 10013
 	CanNotDoThis         = 10014
 	UnopenedPlatform     = 10015
+	UnsupportedType      = 10016
 
 	// 文件
 	FileUploadFail = 20000
