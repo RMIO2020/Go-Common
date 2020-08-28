@@ -27,7 +27,7 @@ ALTER TABLE `electricity_order_team` ADD COLUMN `outage_time`  decimal(15,2) NOT
 ALTER TABLE `electricity_order_team` ADD COLUMN `actual_running_time`  decimal(15,2) NOT NULL DEFAULT 0 COMMENT '实际运行时间' AFTER `outage_time`;
 ALTER TABLE `electricity_order_team` ADD COLUMN `rated_power`  decimal(15,2) NOT NULL DEFAULT 0 COMMENT '额定电度' AFTER `actual_running_time`;
 ALTER TABLE `electricity_order_team` ADD COLUMN `deduction_power_failure`  decimal(15,2) NOT NULL DEFAULT 0 COMMENT '停电扣减度数' AFTER `rated_power`;
-ALTER TABLE `electricity_order_team` ADD COLUMN `total_including_circuit_loss`  decimal(15,2) NOT NULL COMMENT '含路损电度总计' AFTER `deduction_power_failure`;
+ALTER TABLE `electricity_order_team` ADD COLUMN `total_including_circuit_loss`  decimal(15,2) NOT NULL DEFAULT 0 COMMENT '含路损电度总计' AFTER `deduction_power_failure`;
 ALTER TABLE `electricity_order_team` ADD COLUMN `other_fee`  decimal(15,2) NOT NULL DEFAULT 0 COMMENT '其他费用' AFTER `total_including_circuit_loss`;
 ALTER TABLE `electricity_order_team` ADD COLUMN `explain`  varchar(2048) NOT NULL DEFAULT '' COMMENT '说明' AFTER `other_fee`;
 
