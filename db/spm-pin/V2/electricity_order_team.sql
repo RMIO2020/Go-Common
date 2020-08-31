@@ -20,8 +20,8 @@ CREATE TABLE `electricity_order_team` (
 -- 2020-08-22 吴永展 backend后台增加字段
 ALTER TABLE `electricity_order_team` MODIFY COLUMN `electricity_num`  decimal(15,2) NOT NULL DEFAULT 0 COMMENT '实际电度' AFTER `electricity_price`;
 ALTER TABLE `electricity_order_team` MODIFY COLUMN `remarks`  varchar(2048) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '备注' AFTER `amount`;
-ALTER TABLE `electricity_order_team` ADD COLUMN `start_time`  date NOT NULL DEFAULT '1970-01-01' COMMENT '起始时间' AFTER `time_end`;
-ALTER TABLE `electricity_order_team` ADD COLUMN `end_time`  date NOT NULL DEFAULT '1970-01-01' COMMENT '截止时间' AFTER `start_time`;
+ALTER TABLE `electricity_order_team` ADD COLUMN `start_time`  datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '起始时间' AFTER `time_end`;
+ALTER TABLE `electricity_order_team` ADD COLUMN `end_time`  datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '截止时间' `start_time`;
 ALTER TABLE `electricity_order_team` ADD COLUMN `rated_operating_time`  decimal(15,2) NOT NULL DEFAULT 0 COMMENT '额定运行时间' AFTER `amount`;
 ALTER TABLE `electricity_order_team` ADD COLUMN `outage_time`  decimal(15,2) NOT NULL DEFAULT 0 COMMENT '停电时间' AFTER `rated_operating_time`;
 ALTER TABLE `electricity_order_team` ADD COLUMN `actual_running_time`  decimal(15,2) NOT NULL DEFAULT 0 COMMENT '实际运行时间' AFTER `outage_time`;
