@@ -1,6 +1,7 @@
 package smtp
 
 import (
+	"fmt"
 	"net/smtp"
 	"strings"
 )
@@ -40,6 +41,8 @@ func (E *Smtp) SendToMail(to, subject, body, MailType string) error {
 
 	msg := []byte("To: " + to + "\r\nFrom: " + E.SendUser + ">\r\nSubject: " + subject + "\r\n" + ContentType + "\r\n\r\n" + body)
 	sendTo := strings.Split(to, ";")
+	fmt.Println("Send Email ............")
 	err := smtp.SendMail(E.Host, auth, E.SendUser, sendTo, msg)
+	fmt.Println("Result ", err)
 	return err
 }
