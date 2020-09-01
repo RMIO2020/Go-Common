@@ -4,16 +4,16 @@ import "github.com/RMIO2020/Go-Common/helper/cache"
 
 func SetRate(Symbol string, rate float64) {
 	switch Symbol {
-	case "BTC-USDT":
+	case BTCUSDT:
 		Red.Set("rate1", rate, cache.TimeDayToSeven)
-		Red.Set(Symbol, rate, cache.TimeDayToSeven)
-	case "ETH-USDT":
+		Red.Set(BTCUSDT, rate, cache.TimeDayToSeven)
+	case ETHUSDT:
 		Red.Set("rate2", rate, cache.TimeDayToSeven)
-		Red.Set(Symbol, rate, cache.TimeDayToSeven)
-	case "ZEC-USDT":
+		Red.Set(ETHUSDT, rate, cache.TimeDayToSeven)
+	case ZECUSDT:
 		Red.Set("rate5", rate, cache.TimeDayToSeven)
-		Red.Set(Symbol, rate, cache.TimeDayToSeven)
-	case "CKB-USDT":
-		Red.Set(Symbol, rate, cache.TimeDayToSeven)
+		Red.Set(ZECUSDT, rate, cache.TimeDayToSeven)
+	case CKBUSDT:
+		Red.Set(CKBUSDT, rate, cache.TimeDayToSeven)
 	}
 }

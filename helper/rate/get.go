@@ -36,16 +36,17 @@ func GetRateToUSDT(Currency string) (result float64) {
 	var err error
 	switch Currency {
 	case "BTC":
-		rVal := Red.Get("rate1").Val()
+		rVal := Red.Get(BTCUSDT).Val()
 		result, err = strconv.ParseFloat(rVal, 64)
 	case "ETH":
-		rVal := Red.Get("rate2").Val()
+		rVal := Red.Get(ETHUSDT).Val()
 		result, err = strconv.ParseFloat(rVal, 64)
 	case "ZEC":
-		rVal := Red.Get("rate5").Val()
+		rVal := Red.Get(ZECUSDT).Val()
 		result, err = strconv.ParseFloat(rVal, 64)
 	case "CKB":
-		result = 0
+		rVal := Red.Get(CKBUSDT).Val()
+		result, err = strconv.ParseFloat(rVal, 64)
 	case "USDT":
 		result = 1
 	case "CNY":
