@@ -45,6 +45,7 @@ const (
 	CanNotDoThis         = 10014
 	UnopenedPlatform     = 10015
 	UnsupportedType      = 10016
+	UntrustedSource      = 10017
 
 	// 文件
 	FileUploadFail = 20000
