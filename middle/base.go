@@ -10,12 +10,14 @@ const (
 var Middlewares *Middle
 
 type Middle struct {
-	Redis *redis.Client
+	Redis         *redis.Client
+	InternalHosts string
 }
 
-func Init(R *redis.Client) {
+func Init(R *redis.Client, InternalHost string) {
 	Middlewares = &Middle{
-		Redis: R,
+		Redis:         R,
+		InternalHosts: InternalHost,
 	}
 }
 

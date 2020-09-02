@@ -21,6 +21,7 @@ var ZhCn = subMsgType{
 	CanNotDoThis:         "不能进行此操作",
 	UnopenedPlatform:     "未开通的平台",
 	UnsupportedType:      "不支持的类型",
+	UntrustedSource:      "不信任来源",
 
 	//用户
 	UserExists:    "用户已存在",
