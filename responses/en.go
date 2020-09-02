@@ -21,6 +21,7 @@ var En = subMsgType{
 	CanNotDoThis:         "Can't do this",
 	UnopenedPlatform:     "Unopened Platform",
 	UnsupportedType:      "Unsupported Type",
+	UntrustedSource:      "Untrusted Source",
 
 	//用户
 	UserExists:    "User already exists",
