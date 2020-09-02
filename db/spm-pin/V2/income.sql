@@ -12,6 +12,7 @@ ALTER TABLE `income_pool` ADD `remarks` varchar(500) NOT NULL DEFAULT '' COMMENT
 
 -- 2020-08-06 吴永展-增加收益的交易id
 ALTER TABLE `income_pool` ADD COLUMN `tx_id`  varchar(512) NOT NULL DEFAULT '' COMMENT '交易id' AFTER `date`;
+ALTER TABLE `income_user` ADD COLUMN `tx_id`  varchar(512) NOT NULL DEFAULT '' COMMENT '交易id' AFTER `date`;
 
 -- 2020-08-27 吴永展 发放收益时间字段
 ALTER TABLE `income_user` ADD COLUMN `issue_income_time`  datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '发放收益时间' AFTER `remarks`;
