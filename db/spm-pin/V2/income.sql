@@ -15,3 +15,9 @@ ALTER TABLE `income_pool` ADD COLUMN `tx_id`  varchar(512) NOT NULL DEFAULT '' C
 
 -- 2020-08-27 吴永展 发放收益时间字段
 ALTER TABLE `income_user` ADD COLUMN `issue_income_time`  datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '发放收益时间' AFTER `remarks`;
+
+
+alter  table `income_pool` modify  column `currency` enum('','BTC','ETH','USDT','ZEC','CKB') NOT NULL DEFAULT '' COMMENT '币种';
+ALTER TABLE `income_pool` ADD COLUMN `protocol` enum('','ERC20') NOT NULL DEFAULT '' COMMENT '协议' AFTER `currency`;
+alter  table `income_user` modify  column `currency` enum('','BTC','ETH','USDT','ZEC','CKB') NOT NULL DEFAULT '' COMMENT '币种';
+ALTER TABLE `income_user` ADD COLUMN `protocol` enum('','ERC20') NOT NULL DEFAULT '' COMMENT '协议' AFTER `currency`;
