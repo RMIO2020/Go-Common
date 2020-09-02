@@ -1,6 +1,8 @@
 package sms
 
-import "github.com/RMIO2020/Go-Message/common/helper/request"
+import (
+	"github.com/RMIO2020/Go-Common/helper/request"
+)
 
 var YP *YunPian
 
