@@ -51,6 +51,7 @@ var En = subMsgType{
 	LotNumberExists:          "Lot number already exists",
 	IncorrectProductQuantity: "Incorrect product quantity",
 	BillEmptyMachine:         "The number of miners in the bill is zero",
+	LotNumberNotExists:       "Lot number does not exist",
 
 	// 订单
 	OrderTimeOut:    "Order timeout",

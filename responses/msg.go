@@ -59,6 +59,7 @@ const (
 	LotNumberExists          = 30005
 	IncorrectProductQuantity = 30006
 	BillEmptyMachine         = 30007
+	LotNumberNotExists       = 30008
 
 	// 用户
 	UserExists    = 60000
