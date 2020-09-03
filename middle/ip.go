@@ -11,6 +11,7 @@ import (
 func (M *Middle) AuthIP() func(c *gin.Context) {
 	return func(c *gin.Context) {
 		CliIP := c.ClientIP()
+		fmt.Println("CliIP:", CliIP)
 		var Ips []string
 		err := json.Unmarshal([]byte(M.InternalIp), &Ips)
 		if err != nil {
@@ -30,7 +31,6 @@ func (M *Middle) AuthIP() func(c *gin.Context) {
 			}
 		}
 		if !isGoOut {
-			fmt.Println("UntrustedSource IP:", CliIP)
 			resp.ErrRep(c, &resp.Elem{
 				Code: resp.UntrustedSource,
 			}, http.StatusNotFound)

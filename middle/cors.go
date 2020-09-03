@@ -42,6 +42,7 @@ func (M *Middle) InternalCors() func(c *gin.Context) {
 		isOrigin := false
 		method := c.Request.Method
 		origin := c.Request.Header.Get("Origin") //请求头部
+		fmt.Println("Cli Host:", origin)
 		for _, host := range hosts {
 			if host == "*" || host == origin {
 				isOrigin = true
@@ -51,7 +52,6 @@ func (M *Middle) InternalCors() func(c *gin.Context) {
 		}
 
 		if !isOrigin {
-			fmt.Println("UntrustedSource Host:", origin)
 			resp.ErrRep(c, &resp.Elem{
 				Code: resp.UntrustedSource,
 			}, http.StatusNotFound)
