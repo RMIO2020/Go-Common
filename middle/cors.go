@@ -2,6 +2,7 @@ package middle
 
 import (
 	"encoding/json"
+	"fmt"
 	resp "github.com/RMIO2020/Go-Common/responses"
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -38,22 +39,23 @@ func (M *Middle) InternalCors() func(c *gin.Context) {
 		}
 
 		vhost := "localhost"
-		is_origin := false
+		isOrigin := false
 		method := c.Request.Method
 		origin := c.Request.Header.Get("Origin") //请求头部
 		for _, v := range m {
 			if v == "*" {
-				is_origin = true
+				isOrigin = true
 				goto SetOrigin
 			}
 			if v == origin {
-				is_origin = true
+				isOrigin = true
 				vhost = origin
 				goto SetOrigin
 			}
 		}
 
-		if !is_origin {
+		if !isOrigin {
+			fmt.Println("UntrustedSource:", origin)
 			resp.ErrRep(c, &resp.Elem{
 				Code: resp.UntrustedSource,
 			}, http.StatusNotFound)
