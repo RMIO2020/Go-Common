@@ -24,11 +24,11 @@ func (M *Middle) Cors() func(c *gin.Context) {
 	}
 }
 
-/* 内部访问限制 */
+/* 访问限制 */
 func (M *Middle) InternalCors() func(c *gin.Context) {
 	return func(c *gin.Context) {
-		var m []string
-		err := json.Unmarshal([]byte(M.InternalHosts), &m)
+		var hosts []string
+		err := json.Unmarshal([]byte(M.InternalHosts), &hosts)
 		if err != nil {
 			resp.ErrRep(c, &resp.Elem{
 				Code: resp.UnknownError,
@@ -42,20 +42,16 @@ func (M *Middle) InternalCors() func(c *gin.Context) {
 		isOrigin := false
 		method := c.Request.Method
 		origin := c.Request.Header.Get("Origin") //请求头部
-		for _, v := range m {
-			if v == "*" {
+		for _, host := range hosts {
+			if host == "*" || host == origin {
 				isOrigin = true
-				goto SetOrigin
-			}
-			if v == origin {
-				isOrigin = true
-				vhost = origin
+				vhost = host
 				goto SetOrigin
 			}
 		}
 
 		if !isOrigin {
-			fmt.Println("UntrustedSource:", origin)
+			fmt.Println("UntrustedSource Host:", origin)
 			resp.ErrRep(c, &resp.Elem{
 				Code: resp.UntrustedSource,
 			}, http.StatusNotFound)
