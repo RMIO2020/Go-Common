@@ -23,10 +23,10 @@ func (M *Middle) AuthIP() func(c *gin.Context) {
 			return
 		}
 
-		isGoOut := true
+		isGoOut := false
 		for _, Ip := range Ips {
 			if Ip == "*" || Ip == CliIP {
-				isGoOut = false
+				isGoOut = true
 				goto Next
 			}
 		}
