@@ -82,6 +82,11 @@ const (
 	MinimumQuantity = 80001
 	MaximumQuantity = 80002
 	NotPayableOrder = 80003
+
+	//活动
+	ActivityEnds           = 90000
+	ActivityParticipate    = 90001
+	ActivityNotParticipate = 90002
 )
 
 // RespBody 响应体

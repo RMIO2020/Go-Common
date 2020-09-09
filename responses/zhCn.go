@@ -57,4 +57,9 @@ var ZhCn = subMsgType{
 	MinimumQuantity: "小于过最小购买数量",
 	MaximumQuantity: "超过最大购买数量",
 	NotPayableOrder: "该订单不可支付",
+
+	// 活动
+	ActivityEnds:           "活动已经结束",
+	ActivityParticipate:    "您已经参与了该活动",
+	ActivityNotParticipate: "您尚未参与该活动",
 }
