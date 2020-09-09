@@ -62,4 +62,5 @@ var ZhCn = subMsgType{
 	ActivityEnds:           "活动已经结束",
 	ActivityParticipate:    "您已经参与了该活动",
 	ActivityNotParticipate: "您尚未参与该活动",
+	ActivityNotStarted:     "活动尚未开始",
 }

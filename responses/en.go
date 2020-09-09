@@ -63,4 +63,5 @@ var En = subMsgType{
 	ActivityEnds:           "Activity has ended",
 	ActivityParticipate:    "You have participated in the event",
 	ActivityNotParticipate: "You did not participate in the event",
+	ActivityNotStarted:     "Activity not started",
 }

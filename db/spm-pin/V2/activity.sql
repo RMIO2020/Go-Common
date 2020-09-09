@@ -8,6 +8,7 @@ CREATE TABLE `activity` (
   `activity_time_end` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '活动结束时间',
   `create_time` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '添加时间',
   `update_time` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '更新时间',
+  `is_reservation` enum('YES','NO') NOT NULL DEFAULT 'YES' COMMENT '是否为预约活动',
   `status` enum('','reservation','processing','end','timeout') NOT NULL DEFAULT '' COMMENT '状态',
   `remarks` varchar(500) NOT NULL DEFAULT '' COMMENT '备注',
   PRIMARY KEY (`id`)

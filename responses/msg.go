@@ -87,6 +87,7 @@ const (
 	ActivityEnds           = 90000
 	ActivityParticipate    = 90001
 	ActivityNotParticipate = 90002
+	ActivityNotStarted     = 90003
 )
 
 // RespBody 响应体
