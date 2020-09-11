@@ -58,4 +58,10 @@ var En = subMsgType{
 	MinimumQuantity: "Less than the minimum purchase quantity",
 	MaximumQuantity: "Maximum purchase quantity exceeded",
 	NotPayableOrder: "The order is not payable",
+
+	// 活动
+	ActivityEnds:           "Activity has ended",
+	ActivityParticipate:    "You have participated in the event",
+	ActivityNotParticipate: "You did not participate in the event",
+	ActivityNotStarted:     "Activity not started",
 }
