@@ -63,25 +63,27 @@ func TestAliYun(t *testing.T) {
 	// SecretKey 阿里云身份验证，在阿里云服务器管理控制台创建
 	secretKey := "fXLuIlgxsevxxUVfNch9bGj65VilOc"
 	// 所属的 Topic
-	topic := "Test"
+	topic := "RM-Online"
 	// Topic所属实例ID，默认实例为空
 	instanceId := "MQ_INST_1839080919510286_BXSQIsss"
 	// Gour Id
-	groupId := "GID_RmTest"
+	groupId := "GID_Notice"
 	// Tag
-	tag := "test"
+	tag := "notice"
 
 	InitAliyun(endpoint, accessKey, secretKey, "")
 	Mq := NewAliyun()
 
-	//Mq.InitProducer(instanceId, topic)
-	//for v:=0; v < 10; v++ {
-	//	ret, err := Mq.PushMsg("Test123", tag)
-	//	if err != nil {
-	//		fmt.Printf("err : %+v \n", err)
-	//	}
-	//	fmt.Printf("ret.id : %+v \n", ret)
-	//}
+	Mq.InitProducer(instanceId, topic)
+	for v := 0; v < 1; v++ {
+		ret, err := Mq.PushMsg("{\"type\":\"Registered\",\"email\":\"shiyaojia@rockminer.com\",\"phone\":\"\",\"code\":\"1234\",\"platform\":\"pin-min\",\"language\":\"en\"}", tag)
+		if err != nil {
+			fmt.Printf("err : %+v \n", err)
+		}
+		fmt.Printf("ret : %+v \n", ret)
+		fmt.Printf("ret.id : %+v \n", ret.MessageId)
+
+	}
 
 	Mq.InitConsumer(instanceId, topic, groupId, tag)
 	Mq.PullMsg(readMsg)

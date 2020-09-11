@@ -2,8 +2,6 @@ package rsa
 
 import (
 	"fmt"
-	"github.com/RMIO2020/Go-Common/helper"
-	"github.com/RMIO2020/Go-Wallet-Service/config"
 	"github.com/yuchenfw/gocrypt"
 	"testing"
 )
@@ -19,14 +17,7 @@ var (
 )
 
 func Init() {
-	vHandle := config.New()
-	path, _ := helper.GetProjectRoot()
-	path = path + "/../../../"
-	err := vHandle.InitConfig(path)
-	if err != nil {
 
-	}
-	InitTRSACrypt(vHandle.Config.RMRsa)
 }
 
 func TestRsaCrypt_Decrypt(t *testing.T) {
