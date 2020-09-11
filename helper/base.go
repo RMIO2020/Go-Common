@@ -95,3 +95,12 @@ func IsEmail(str string) bool {
 	reg := regexp.MustCompile(pattern)
 	return reg.MatchString(str)
 }
+
+// 创建验证码（保留4位）
+func CreateCode() string {
+	seed := time.Now().UnixNano()
+	r := rand.New(rand.NewSource(seed))
+	randomNumber := r.Intn(9999)
+	ret := fmt.Sprintf("%04d", randomNumber)
+	return ret
+}
