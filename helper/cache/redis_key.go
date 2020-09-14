@@ -26,6 +26,9 @@ const (
 	SetGoogleEmail = "USER_EMAIL_BD_GOOGLE_" // 设置google发送邮件验证码
 
 	// 绑定
+	BdPhoneToEmail = "USER_EMAIL_BINDING_" // 绑定手机发送邮件
+	BdPhoneToPhone = "USER_SMS_BINDING_"   // 绑定手机发送邮件
+
 	BdEmail = "USER_EMAIL_BINDING_" // 绑定手机发送邮件
 	BdPhone = "USER_SMS_BD_PHONE_"  // 绑定手机发短信
 	/* ----------------------- 已登录状态下的 Key ----------------------- */
@@ -73,4 +76,12 @@ func GetBdEmail(Email string) string {
 /* 绑定手机 */
 func GetBdPhone(Email string) string {
 	return BdPhone + Email
+}
+
+func GetBdPhoneEmail(Email string) string {
+	return BdPhoneToEmail + Email
+}
+
+func GetBdPhoneSms(Email string) string {
+	return BdPhoneToPhone + Email
 }
