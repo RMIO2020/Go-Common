@@ -39,7 +39,7 @@ func (E *Smtp) SendToMail(to, subject, body, MailType string) error {
 		ContentType = "Content-Type: text/plain" + "; charset=UTF-8"
 	}
 
-	msg := []byte("To: " + to + "\r\nFrom: " + E.SendUser + ">\r\nSubject: " + subject + "\r\n" + ContentType + "\r\n\r\n" + body)
+	msg := []byte("To: " + to + "\r\nFrom: " + E.ReplyUser + ">\r\nSubject: " + subject + "\r\n" + ContentType + "\r\n\r\n" + body)
 	sendTo := strings.Split(to, ";")
 	fmt.Println("Send Email ............")
 	err := smtp.SendMail(E.Host, auth, E.SendUser, sendTo, msg)
