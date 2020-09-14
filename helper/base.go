@@ -9,6 +9,7 @@ import (
 	"math/rand"
 	"os"
 	"regexp"
+	"strings"
 	"time"
 )
 
@@ -94,4 +95,29 @@ func IsEmail(str string) bool {
 	pattern := `\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*`
 	reg := regexp.MustCompile(pattern)
 	return reg.MatchString(str)
+}
+
+// 创建验证码（保留4位）
+func CreateCode() string {
+	seed := time.Now().UnixNano()
+	r := rand.New(rand.NewSource(seed))
+	randomNumber := r.Intn(9999)
+	ret := fmt.Sprintf("%04d", randomNumber)
+	return ret
+}
+
+// 创建邀请码（保留6位）
+func CreateInviteCode() string {
+	var letters = []rune("abcdefghijklmnopqrstuvwxyz0123456789")
+	b := make([]rune, 6)
+	for i := range b {
+		b[i] = letters[rand.Intn(len(letters))]
+	}
+	return string(b)
+}
+
+// 获取完整手机号码
+func GetFullPhone(phone, areaCode string) string {
+	areaCode = strings.TrimLeft(areaCode, "+")
+	return fmt.Sprintf("+%s%s", areaCode, phone)
 }
