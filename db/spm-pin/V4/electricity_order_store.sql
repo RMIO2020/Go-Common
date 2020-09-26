@@ -10,7 +10,7 @@ CREATE TABLE `electricity_order_store` (
   `store_amount` decimal(15,2) NOT NULL DEFAULT '0.00' COMMENT '预存金额',
   `hosting_name` varchar(255) NOT NULL DEFAULT '' COMMENT '托管姓名',
   `hosting_address` varchar(255) NOT NULL DEFAULT '' COMMENT '托管钱包地址',
-  `is_first` enum('NO','YES') NOT NULL DEFAULT 'NO' COMMENT '是否首次',
+  `is_order_attach` enum('NO','YES') NOT NULL DEFAULT 'NO' COMMENT '是否为下订单时附属',
   `amount` decimal(15,8) NOT NULL DEFAULT '0.00000000' COMMENT '金额',
   `usdt_amount` decimal(15,8) NOT NULL DEFAULT '0.00000000' COMMENT 'usdt金额',
   `cny_amount` decimal(15,2) NOT NULL DEFAULT '0.00' COMMENT '人民币金额',
