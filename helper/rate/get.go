@@ -5,6 +5,8 @@ import (
 	"strings"
 )
 
+var CnyToUsdDefault = 6.72
+
 func CalculationAmountToUSDT(Currency string, Amount float64) (result float64) {
 	rate := GetRateToUSDT(Currency)
 	//result, _ = decimal.NewFromFloat(Amount).Mul(decimal.NewFromFloat(rate)).Float64()
@@ -36,7 +38,8 @@ func GetRateToCny(Currency string) (result float64) {
 	switch Currency {
 	default:
 		uRate := GetRateToUSDT(Currency)
-		result = uRate * 6.9
+		CnyRate := GetRateToUSDT("CNY")
+		result = uRate * (1 / CnyRate)
 	}
 	return
 }
@@ -60,7 +63,11 @@ func GetRateToUSDT(Currency string) (result float64) {
 	case "USDT":
 		result = 1
 	case "CNY":
-		result = 0.14493
+		rVal := Red.Get(CNYUSDT).Val()
+		result, err = strconv.ParseFloat(rVal, 64)
+		if result == 0 || err != nil {
+			result = 1 / CnyToUsdDefault
+		}
 	default:
 		result = 0
 	}
