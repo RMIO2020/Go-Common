@@ -41,7 +41,7 @@ func GetRateToCny(Currency string) (result float64) {
 		if cRate == 0 || err != nil {
 			cRate = CNYTOUSD
 		}
-		result = uRate * cRate
+		result = uRate / cRate
 	}
 	return
 }
