@@ -70,7 +70,6 @@ func GetRateToUSDT(Currency string) (result float64) {
 		if result == 0 || err != nil {
 			result = CNYTOUSD
 		}
-		result = 1 / result
 	default:
 		result = 0
 	}
