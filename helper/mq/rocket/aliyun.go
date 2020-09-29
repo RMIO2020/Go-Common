@@ -10,6 +10,7 @@ import (
 
 var AliyunMQClient mq_http_sdk.MQClient
 var Prodrcer mq_http_sdk.MQProducer
+var Mq *AliyunMQ
 
 func InitAliyun(endpoint, accessKey, secretKey, securityToken string) {
 	tmpClient := mq_http_sdk.NewAliyunMQClient(endpoint, accessKey, secretKey, securityToken)
