@@ -66,10 +66,11 @@ func GetRateToUSDT(Currency string) (result float64) {
 		result = 1
 	case "CNY":
 		rVal := Red.Get(CNYUSDT).Val()
-		result, err = strconv.ParseFloat(rVal, 64)
+		result, err := strconv.ParseFloat(rVal, 64)
 		if result == 0 || err != nil {
-			result = 1 / CNYTOUSD
+			result = CNYTOUSD
 		}
+		result = 1 / result
 	default:
 		result = 0
 	}
