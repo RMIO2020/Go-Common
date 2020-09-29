@@ -16,4 +16,6 @@ const (
 	ZECUSDT = "ZEC-USDT"
 	CKBUSDT = "CKB-USDT"
 	CNYUSDT = "CNY-USDT"
+
+	CNYTOUSD = 6.72
 )
