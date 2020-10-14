@@ -36,6 +36,9 @@ const (
 	// 收益补数据
 	IncomeStartT = "Income:Start" //收益开始时间
 	IncomeEndT   = "Income:End"   //收益结束时间
+
+	SynchronousUserHashLastId   = "Syn:User:Hash:Id"   // 同步用户 Hash 端 ID
+	SynchronousUserModuleLastId = "Syn:User:Module:Id" // 同步用户 Module 端 ID
 )
 
 /* 获取支付缓存 Key */
