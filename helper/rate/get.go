@@ -1,6 +1,7 @@
 package rate
 
 import (
+	"github.com/shopspring/decimal"
 	"strconv"
 	"strings"
 )
@@ -41,7 +42,7 @@ func GetRateToCny(Currency string) (result float64) {
 		if cRate == 0 || err != nil {
 			cRate = CNYTOUSD
 		}
-		result = uRate * cRate
+		result, _ = decimal.NewFromFloat(uRate).Div(decimal.NewFromFloat(cRate)).Float64()
 	}
 	return
 }
