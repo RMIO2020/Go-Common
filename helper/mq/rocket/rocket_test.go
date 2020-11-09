@@ -59,24 +59,37 @@ func TestAliYun(t *testing.T) {
 	// 设置HTTP接入域名（此处以公共云生产环境为例）
 	endpoint := "http://1839080919510286.mqrest.cn-beijing.aliyuncs.com"
 	// AccessKey 阿里云身份验证，在阿里云服务器管理控制台创建
-	accessKey := "LTAI4G1L6gECwdPLLzNcuSzy"
+	accessKey := ""
 	// SecretKey 阿里云身份验证，在阿里云服务器管理控制台创建
-	secretKey := "fXLuIlgxsevxxUVfNch9bGj65VilOc"
+	secretKey := ""
 	// 所属的 Topic
-	topic := "RM-Online"
+	topic := "RM-Test"
 	// Topic所属实例ID，默认实例为空
 	instanceId := "MQ_INST_1839080919510286_BXSQIsss"
 	// Gour Id
 	groupId := "GID_Notice"
 	// Tag
-	tag := "notice"
+	tag := Notice
 
 	InitAliyun(endpoint, accessKey, secretKey, "")
 	Mq := NewAliyun()
 
 	Mq.InitProducer(instanceId, topic)
-	for v := 0; v < 1; v++ {
-		ret, err := Mq.PushMsg("{\"type\":\"Registered\",\"email\":\"shiyaojia@rockminer.com\",\"phone\":\"\",\"code\":\"1234\",\"platform\":\"pin-min\",\"language\":\"en\"}", tag)
+	for v := 0; v < 5; v++ {
+		ret, err := Mq.PushMsg("{\"type\":\"Registered\",\"email\":\"\",\"phone\":\"\",\"code\":\"1234\",\"platform\":\"pin-min\",\"language\":\"en\"}", tag)
+		if err != nil {
+			fmt.Printf("err : %+v \n", err)
+		}
+		fmt.Printf("ret : %+v \n", ret)
+		fmt.Printf("ret.id : %+v \n", ret.MessageId)
+	}
+
+	Mq.InitConsumer(instanceId, topic, groupId, tag)
+	test := new(TestReadMsg)
+
+	tag = SystemNotice
+	for v := 0; v < 5; v++ {
+		ret, err := Mq.PushMsg("{\"type\":\"Registered\",\"email\":\"\",\"phone\":\"\",\"code\":\"1234\",\"platform\":\"pin-min\",\"language\":\"en\"}", tag)
 		if err != nil {
 			fmt.Printf("err : %+v \n", err)
 		}
@@ -84,16 +97,28 @@ func TestAliYun(t *testing.T) {
 		fmt.Printf("ret.id : %+v \n", ret.MessageId)
 
 	}
-
 	Mq.InitConsumer(instanceId, topic, groupId, tag)
-	Mq.PullMsg(readMsg)
+	test2 := new(TestRead2Msg)
+	Mq.PullMsg(test, test2)
 }
 
-func readMsg(Data []mq_http_sdk.ConsumeMessageEntry) ([]string, error) {
+type TestReadMsg struct{}
+
+func (T *TestReadMsg) Consumption(Data []mq_http_sdk.ConsumeMessageEntry) ([]string, error) {
 	var handles []string
 	for k, v := range Data {
 		fmt.Println("K:", k, "| v body:", v.MessageBody)
-		fmt.Println("v", v)
+		handles = append(handles, v.ReceiptHandle)
+	}
+	return handles, errors.New("read over")
+}
+
+type TestRead2Msg struct{}
+
+func (T *TestRead2Msg) Consumption(Data []mq_http_sdk.ConsumeMessageEntry) ([]string, error) {
+	var handles []string
+	for k, v := range Data {
+		fmt.Println("2K:", k, "| 2v body:", v.MessageBody)
 		handles = append(handles, v.ReceiptHandle)
 	}
 	return handles, errors.New("read over")
