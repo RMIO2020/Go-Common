@@ -86,20 +86,7 @@ func TestAliYun(t *testing.T) {
 
 	Mq.InitConsumer(instanceId, topic, groupId, tag)
 	test := new(TestReadMsg)
-
-	tag = SystemNotice
-	for v := 0; v < 5; v++ {
-		ret, err := Mq.PushMsg("{\"type\":\"Registered\",\"email\":\"\",\"phone\":\"\",\"code\":\"1234\",\"platform\":\"pin-min\",\"language\":\"en\"}", tag)
-		if err != nil {
-			fmt.Printf("err : %+v \n", err)
-		}
-		fmt.Printf("ret : %+v \n", ret)
-		fmt.Printf("ret.id : %+v \n", ret.MessageId)
-
-	}
-	Mq.InitConsumer(instanceId, topic, groupId, tag)
-	test2 := new(TestRead2Msg)
-	Mq.PullMsg(test, test2)
+	Mq.PullMsg(test)
 }
 
 type TestReadMsg struct{}
@@ -108,17 +95,6 @@ func (T *TestReadMsg) Consumption(Data []mq_http_sdk.ConsumeMessageEntry) ([]str
 	var handles []string
 	for k, v := range Data {
 		fmt.Println("K:", k, "| v body:", v.MessageBody)
-		handles = append(handles, v.ReceiptHandle)
-	}
-	return handles, errors.New("read over")
-}
-
-type TestRead2Msg struct{}
-
-func (T *TestRead2Msg) Consumption(Data []mq_http_sdk.ConsumeMessageEntry) ([]string, error) {
-	var handles []string
-	for k, v := range Data {
-		fmt.Println("2K:", k, "| 2v body:", v.MessageBody)
 		handles = append(handles, v.ReceiptHandle)
 	}
 	return handles, errors.New("read over")

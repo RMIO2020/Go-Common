@@ -18,12 +18,12 @@ type Notice struct {
 }
 
 type SystemNotice struct {
-	Type          string        `json:"type" enum:"Cash,Payment,Warning"`
-	User          string        `json:"user"`
-	Platform      string        `json:"platform"`
-	CashNotice    CashNotice    `json:"cash_notice"`
-	PayNotice     PaymentNotice `json:"pay_notice"`
-	WarningNotice WarningNotice `json:"warning_notice"`
+	Type          string         `json:"type" enum:"Cash,Payment,Warning"`
+	User          string         `json:"user"`
+	Platform      string         `json:"platform"`
+	CashNotice    *CashNotice    `json:"cash_notice"`
+	PayNotice     *PaymentNotice `json:"pay_notice"`
+	WarningNotice *WarningNotice `json:"warning_notice"`
 }
 
 type CashNotice struct {
