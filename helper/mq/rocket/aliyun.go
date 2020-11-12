@@ -49,7 +49,7 @@ func (M *AliyunMQ) InitConsumer(instanceId, topic, groupId, messageTag string) {
 	M.Consumer = M.Client.GetConsumer(instanceId, topic, groupId, messageTag)
 }
 
-func (M *AliyunMQ) PullMsg(Business ...Consumer) {
+func (M *AliyunMQ) PullMsg(Business Consumer) {
 	endChan := make(chan int)
 	respChan := make(chan mq_http_sdk.ConsumeMessageResponse)
 	errChan := make(chan error)
@@ -58,30 +58,26 @@ func (M *AliyunMQ) PullMsg(Business ...Consumer) {
 			select {
 			case resp := <-respChan:
 				{
-					if len(Business) > 0 {
-						for _, v := range Business {
-							handles, err := v.Consumption(resp.Messages)
-							if err != nil {
-								fmt.Printf("Business err %+v  -------->\n", err)
-							} else {
-								// NextConsumeTime前若不确认消息消费成功，则消息会重复消费
-								// 消息句柄有时间戳，同一条消息每次消费拿到的都不一样
-								ackerr := M.Consumer.AckMessage(handles)
-								if ackerr != nil {
-									// 某些消息的句柄可能超时了会导致确认不成功
-									fmt.Println(ackerr)
-									for _, errAckItem := range ackerr.(errors.ErrCode).Context()["Detail"].([]mq_http_sdk.ErrAckItem) {
-										fmt.Printf("\tErrorHandle:%s, ErrorCode:%s, ErrorMsg:%s\n",
-											errAckItem.ErrorHandle, errAckItem.ErrorCode, errAckItem.ErrorMsg)
-									}
-									time.Sleep(time.Duration(3) * time.Second)
-								} else {
-									fmt.Printf("Ack ---->\n\t%s\n", handles)
-								}
+					handles, err := Business.Consumption(resp.Messages)
+					if err != nil {
+						fmt.Printf("Business err %+v  -------->\n", err)
+					} else {
+						// NextConsumeTime前若不确认消息消费成功，则消息会重复消费
+						// 消息句柄有时间戳，同一条消息每次消费拿到的都不一样
+						ackerr := M.Consumer.AckMessage(handles)
+						if ackerr != nil {
+							// 某些消息的句柄可能超时了会导致确认不成功
+							fmt.Println(ackerr)
+							for _, errAckItem := range ackerr.(errors.ErrCode).Context()["Detail"].([]mq_http_sdk.ErrAckItem) {
+								fmt.Printf("\tErrorHandle:%s, ErrorCode:%s, ErrorMsg:%s\n",
+									errAckItem.ErrorHandle, errAckItem.ErrorCode, errAckItem.ErrorMsg)
 							}
-							endChan <- 1
+							time.Sleep(time.Duration(3) * time.Second)
+						} else {
+							fmt.Printf("Ack ---->\n\t%s\n", handles)
 						}
 					}
+					endChan <- 1
 				}
 			case err := <-errChan:
 				{
