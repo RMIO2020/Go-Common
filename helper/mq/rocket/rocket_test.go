@@ -2,12 +2,16 @@ package rocket
 
 import (
 	"context"
+	"encoding/json"
 	"errors"
 	"fmt"
+	_struct "github.com/RMIO2020/Go-Wallet-Service/common/helper/mq/struct"
+	"github.com/RMIO2020/Go-Wallet-Service/common/helper/smtp"
 	"github.com/aliyunmq/mq-http-go-sdk"
 	"github.com/apache/rocketmq-client-go/v2/consumer"
 	"github.com/apache/rocketmq-client-go/v2/primitive"
 	"testing"
+	"time"
 )
 
 func InitTest() (err error) {
@@ -66,27 +70,32 @@ func TestAliYun(t *testing.T) {
 	topic := "RM-Test"
 	// Topic所属实例ID，默认实例为空
 	instanceId := "MQ_INST_1839080919510286_BXSQIsss"
-	// Gour Id
-	groupId := "GID_Notice"
 	// Tag
-	tag := Notice
+	tag := SystemNotice
 
 	InitAliyun(endpoint, accessKey, secretKey, "")
 	Mq := NewAliyun()
-
 	Mq.InitProducer(instanceId, topic)
-	for v := 0; v < 5; v++ {
-		ret, err := Mq.PushMsg("{\"type\":\"Registered\",\"email\":\"\",\"phone\":\"\",\"code\":\"1234\",\"platform\":\"pin-min\",\"language\":\"en\"}", tag)
-		if err != nil {
-			fmt.Printf("err : %+v \n", err)
-		}
-		fmt.Printf("ret : %+v \n", ret)
-		fmt.Printf("ret.id : %+v \n", ret.MessageId)
-	}
 
-	Mq.InitConsumer(instanceId, topic, groupId, tag)
-	test := new(TestReadMsg)
-	Mq.PullMsg(test)
+	m := &_struct.SystemNotice{
+		Type:     _struct.Cash,
+		User:     "测试脚本",
+		Platform: "pin-min",
+		CashNotice: &_struct.CashNotice{
+			Type:     smtp.SysRecharge,
+			Time:     time.Now().Format("2006-01-02 15:04:05"),
+			Amount:   "0.01",
+			Currency: "USDT",
+		},
+	}
+	m2, _ := json.Marshal(m)
+	m3 := string(m2)
+	ret, err := Mq.PushMsg(m3, tag)
+	if err != nil {
+		fmt.Printf("err : %+v \n", err)
+	}
+	fmt.Printf("ret : %+v \n", ret)
+	fmt.Printf("ret.id : %+v \n", ret.MessageId)
 }
 
 type TestReadMsg struct{}
