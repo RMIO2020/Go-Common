@@ -1,0 +1,22 @@
+CREATE TABLE `electricity_order` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `parent_order_no` varchar(128) NOT NULL DEFAULT '' COMMENT '父订单号（电费账单订单号）',
+  `order_no` varchar(128) NOT NULL DEFAULT '' COMMENT '订单号',
+  `type` enum('ROUTINE','STORE','STOREREDUCE') NOT NULL DEFAULT 'ROUTINE' COMMENT '类型：routine为常规，store为预存，storereduce为预存抵扣',
+  `team_id` int(11) NOT NULL DEFAULT 0 COMMENT '团id',
+  `user_id` varchar(128) NOT NULL DEFAULT '' COMMENT '用户id',
+  `late_day` int(11) NOT NULL DEFAULT 0 COMMENT '滞纳天数',
+  `late_fee` decimal(15,2) NOT NULL DEFAULT 0.00 COMMENT '滞纳金',
+  `amount` decimal(15,8) NOT NULL DEFAULT 0.00000000 COMMENT '总金额',
+  `usdt_amount` decimal(15,8) NOT NULL DEFAULT 0.00000000 COMMENT 'usdt总金额',
+  `usd_amount` decimal(15,2) NOT NULL DEFAULT 0.00 COMMENT '美元总金额',
+  `usdt_rate` decimal(15,8) NOT NULL DEFAULT 0.00000000 COMMENT 'USDT兑换成美元的汇率',
+  `pay_type` enum('','VIRTUAL','ALIPAY','BANK','WECHAT') NOT NULL DEFAULT 'VIRTUAL' COMMENT '支付方式',
+  `currency` enum('','USDT','USD','CNY') NOT NULL DEFAULT '' COMMENT '支付币种',
+  `protocol` enum('','ERC20') NOT NULL DEFAULT '' COMMENT '协议',
+  `pay_status` enum('FAIL','SUCCESS','BEING','TIMEOUT','WAIT') NOT NULL DEFAULT 'WAIT' COMMENT '支付状态',
+  `pay_time` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '支付时间',
+  `create_time` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '添加时间',
+  `update_time` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='电费-订单表';
