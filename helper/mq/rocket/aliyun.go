@@ -49,7 +49,7 @@ func (M *AliyunMQ) InitConsumer(instanceId, topic, groupId, messageTag string) {
 	M.Consumer = M.Client.GetConsumer(instanceId, topic, groupId, messageTag)
 }
 
-func (M *AliyunMQ) PullMsg(Business Consumer) {
+func (M *AliyunMQ) PullMsg(Business func([]mq_http_sdk.ConsumeMessageEntry) ([]string, error)) {
 	endChan := make(chan int)
 	respChan := make(chan mq_http_sdk.ConsumeMessageResponse)
 	errChan := make(chan error)
@@ -58,7 +58,7 @@ func (M *AliyunMQ) PullMsg(Business Consumer) {
 			select {
 			case resp := <-respChan:
 				{
-					handles, err := Business.Consumption(resp.Messages)
+					handles, err := Business(resp.Messages)
 					if err != nil {
 						fmt.Printf("Business err %+v  -------->\n", err)
 					} else {
@@ -101,8 +101,8 @@ func (M *AliyunMQ) PullMsg(Business Consumer) {
 		// 长轮询消费消息
 		// 长轮询表示如果topic没有消息则请求会在服务端挂住3s，3s内如果有消息可以消费则立即返回
 		M.Consumer.ConsumeMessage(respChan, errChan,
-			10, // 一次最多消费3条(最多可设置为16条)
-			1,  // 长轮询时间3秒（最多可设置为30秒）
+			3, // 一次最多消费3条(最多可设置为16条)
+			3, // 长轮询时间3秒（最多可设置为30秒）
 		)
 		<-endChan
 	}
