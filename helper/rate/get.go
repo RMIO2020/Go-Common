@@ -47,6 +47,18 @@ func GetRateToCny(Currency string) (result float64) {
 	return
 }
 
+// GetRateToUsd
+func GetRateToUsd(Currency string) (result float64) {
+	Currency = strings.ToUpper(Currency)
+	switch Currency {
+	default:
+		currencyToUsdt := GetRateToUSDT(Currency)
+		usdToUsdt := GetRateToUSDT("USD")
+		result, _ = decimal.NewFromFloat(currencyToUsdt).Div(decimal.NewFromFloat(usdToUsdt)).Float64()
+	}
+	return
+}
+
 func GetRateToUSDT(Currency string) (result float64) {
 	Currency = strings.ToUpper(Currency)
 	var err error
@@ -72,6 +84,8 @@ func GetRateToUSDT(Currency string) (result float64) {
 			rate = CNYTOUSD
 		}
 		result = rate
+	case "USD":
+		result = USDTOUSDT
 	default:
 		result = 0
 	}
