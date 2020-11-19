@@ -1,6 +1,7 @@
 package rocket
 
 const (
-	Notice      = "notice"
-	Transaction = "transaction"
+	Notice             = "notice"
+	TransactionPIn     = "orderPin"
+	TransactionHosting = "orderHosting"
 )
