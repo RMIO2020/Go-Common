@@ -10,7 +10,10 @@ import (
 
 var AliyunMQClient mq_http_sdk.MQClient
 var Prodrcer mq_http_sdk.MQProducer
-var Mq *AliyunMQ
+
+type Consumer interface {
+	Consumption([]mq_http_sdk.ConsumeMessageEntry) ([]string, error)
+}
 
 func InitAliyun(endpoint, accessKey, secretKey, securityToken string) {
 	tmpClient := mq_http_sdk.NewAliyunMQClient(endpoint, accessKey, secretKey, securityToken)
