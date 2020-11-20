@@ -92,7 +92,7 @@ func (M *AliyunMQ) PullMsg(Business func([]mq_http_sdk.ConsumeMessageEntry) ([]s
 				}
 			case <-time.After(35 * time.Second):
 				{
-					fmt.Println("Timeout of consumer message ??")
+					//fmt.Println("Timeout of consumer message ??")
 					endChan <- 1
 				}
 			}
