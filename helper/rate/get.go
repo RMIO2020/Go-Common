@@ -22,6 +22,16 @@ func CalculationAmountUSDTToBTC(Amount float64) (result float64) {
 	return
 }
 
+func CalculationAmountUSDTToUsd(Currency string, Amount float64) (result float64) {
+	if Currency == "USD" {
+		result = Amount
+	} else {
+		UAmount := CalculationAmountToUSDT(Currency, Amount)
+		result = UAmount * GetRateToUsd("USDT")
+	}
+	return
+}
+
 func CalculationAmountToCNY(Currency string, Amount float64) (result float64) {
 	if Currency == "CNY" {
 		result = Amount
