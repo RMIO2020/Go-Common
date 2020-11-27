@@ -6,4 +6,5 @@ const (
 	OrderHosting = "orderHosting"
 	Transaction  = "transaction"
 	SystemNotice = "Sys"
+	PayCredit    = "payCredit"
 )
