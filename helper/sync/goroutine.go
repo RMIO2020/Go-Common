@@ -1,7 +1,7 @@
 package sync
 
 import (
-	"github.com/RMIO2020/GO-PIN/logger"
+	"github.com/RMIO2020/Go-Wallet-Service/logger"
 	"go.uber.org/zap"
 )
 
