@@ -1,2 +1,2 @@
-ALTER TABLE `order` ADD COLUMN `commission_reduction_amount` `commission_reduction_amount`  decimal(15,8) NOT NULL DEFAULT 0.00000000 COMMENT '返佣金额（跟usdt价值量一致）' AFTER `other_fee`;
-ALTER TABLE `order` ADD COLUMN `commission_reduction_cny_amount`  decimal(15,2) NOT NULL DEFAULT 0 COMMENT '返佣金额（人民币）' AFTER `commission_reduction_usdt_amount`;
+ALTER TABLE `order` ADD COLUMN `commission_reduction_amount`  decimal(15,8) NOT NULL DEFAULT 0.00000000 COMMENT '返佣金额（跟usdt价值量一致）' AFTER `other_fee`;
+ALTER TABLE `order` ADD COLUMN `commission_reduction_cny_amount`  decimal(15,2) NOT NULL DEFAULT 0 COMMENT '返佣金额（人民币）' AFTER `commission_reduction_amount`;
