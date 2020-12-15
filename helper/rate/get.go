@@ -47,6 +47,16 @@ func GetRateToCny(Currency string) (result float64) {
 	return
 }
 
+func CalculationAmountToUsd(Currency string, Amount float64) (result float64) {
+	if Currency == "USD" {
+		result = Amount
+	} else {
+		UAmount := CalculationAmountToUSDT(Currency, Amount)
+		result = UAmount * GetRateToUsd("USDT")
+	}
+	return
+}
+
 // GetRateToUsd
 func GetRateToUsd(Currency string) (result float64) {
 	Currency = strings.ToUpper(Currency)
