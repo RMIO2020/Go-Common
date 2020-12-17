@@ -2,10 +2,8 @@ package rocket
 
 import (
 	"fmt"
-	"github.com/RMIO2020/Go-Message/logger"
 	"github.com/aliyunmq/mq-http-go-sdk"
 	"github.com/gogap/errors"
-	"go.uber.org/zap"
 	"strings"
 	"time"
 )
@@ -60,7 +58,7 @@ func (M *AliyunMQ) PullMsg(Business func([]mq_http_sdk.ConsumeMessageEntry) ([]s
 			defer func() {
 				err := recover()
 				if err != nil {
-					logger.Error("goroutine failed:", zap.Any("error", err))
+					fmt.Println("goroutine failed:", err)
 				}
 			}()
 			select {
