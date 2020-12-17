@@ -1,0 +1,2 @@
+ALTER TABLE `user_check` MODIFY COLUMN `platform`  enum('','spm-min','hosting','pin-min') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT  COMMENT '平台' AFTER `update_time`;
+ALTER TABLE `user_check` MODIFY COLUMN `platform`  enum('','spm-min','hosting','pin-min') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '平台' AFTER `update_time`;

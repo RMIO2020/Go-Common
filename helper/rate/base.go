@@ -18,4 +18,6 @@ const (
 	CNYUSDT = "CNY-USDT"
 
 	CNYTOUSD = 0.14881
+
+	USDTOUSDT = 1
 )

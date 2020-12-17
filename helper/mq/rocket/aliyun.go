@@ -91,7 +91,7 @@ func (M *AliyunMQ) PullMsg(Business func([]mq_http_sdk.ConsumeMessageEntry) ([]s
 				{
 					// 没有消息
 					if strings.Contains(err.(errors.ErrCode).Error(), "MessageNotExist") {
-						fmt.Println("No new message, continue!")
+						//fmt.Println("No new message, continue!")
 					} else {
 						fmt.Println(err)
 						time.Sleep(time.Duration(3) * time.Second)
@@ -100,7 +100,7 @@ func (M *AliyunMQ) PullMsg(Business func([]mq_http_sdk.ConsumeMessageEntry) ([]s
 				}
 			case <-time.After(35 * time.Second):
 				{
-					fmt.Println("Timeout of consumer message ??")
+					//fmt.Println("Timeout of consumer message ??")
 					endChan <- 1
 				}
 			}
