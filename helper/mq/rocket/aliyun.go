@@ -55,6 +55,12 @@ func (M *AliyunMQ) PullMsg(Business func([]mq_http_sdk.ConsumeMessageEntry) ([]s
 	errChan := make(chan error)
 	for {
 		go func() {
+			defer func() {
+				err := recover()
+				if err != nil {
+					fmt.Println("goroutine failed:", err)
+				}
+			}()
 			select {
 			case resp := <-respChan:
 				{
