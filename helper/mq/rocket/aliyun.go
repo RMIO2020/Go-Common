@@ -113,4 +113,5 @@ func (M *AliyunMQ) PullMsg(Business func([]mq_http_sdk.ConsumeMessageEntry) ([]s
 		)
 		<-endChan
 	}
+
 }
