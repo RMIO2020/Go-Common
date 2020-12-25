@@ -64,6 +64,7 @@ func (M *AliyunMQ) PullMsg(Business func([]mq_http_sdk.ConsumeMessageEntry) ([]s
 			select {
 			case resp := <-respChan:
 				{
+					fmt.Println("receive msg:", resp.Messages)
 					handles, err := Business(resp.Messages)
 					if err != nil {
 						fmt.Printf("Business err %+v  -------->\n", err)
