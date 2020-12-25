@@ -45,7 +45,9 @@ func (E *Smtp) SendToMail(to, subject, body, MailType string) error {
 	fmt.Println("Send Email ............")
 	sync.Go(func() {
 		err := smtp.SendMail(E.Host, auth, E.SendUser, sendTo, msg)
-		fmt.Println("Result ", err)
+		if err != nil {
+			fmt.Println("Send Email Result:", err.Error())
+		}
 	})
 	return nil
 }
