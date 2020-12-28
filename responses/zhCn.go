@@ -53,10 +53,11 @@ var ZhCn = subMsgType{
 	LotNumberNotExists:       "批次号不存在",
 
 	// 订单
-	OrderTimeOut:    "订单超时",
-	MinimumQuantity: "小于最小购买数量",
-	MaximumQuantity: "超过最大购买数量",
-	NotPayableOrder: "该订单不可支付",
+	OrderTimeOut:      "订单超时",
+	MinimumQuantity:   "小于最小购买数量",
+	MaximumQuantity:   "超过最大购买数量",
+	NotPayableOrder:   "该订单不可支付",
+	StoreGreaterTotal: "预存金额大于实际支付金额",
 
 	// 活动
 	ActivityEnds:           "活动已经结束",

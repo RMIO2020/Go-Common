@@ -78,10 +78,11 @@ const (
 	VerificationCodeError = 70008
 
 	//订单
-	OrderTimeOut    = 80000
-	MinimumQuantity = 80001
-	MaximumQuantity = 80002
-	NotPayableOrder = 80003
+	OrderTimeOut      = 80000
+	MinimumQuantity   = 80001
+	MaximumQuantity   = 80002
+	NotPayableOrder   = 80003
+	StoreGreaterTotal = 80004
 
 	//活动
 	ActivityEnds           = 90000

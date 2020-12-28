@@ -1,0 +1,1 @@
+ALTER TABLE `team_machine` MODIFY COLUMN `stock`  int(11) NOT NULL DEFAULT 0 COMMENT '矿机份数' AFTER `group_num`;
