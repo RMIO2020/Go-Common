@@ -3,4 +3,4 @@ ALTER TABLE `electricity_order_user` MODIFY COLUMN `pay_status`  enum('FAIL','SU
 ALTER TABLE `electricity_order_user` ADD COLUMN `bank_card_no`  varchar(128) NOT NULL DEFAULT '' COMMENT '银行卡号' AFTER `publish_status`;
 ALTER TABLE `electricity_order_user` ADD COLUMN `bank_card`  varchar(128) NOT NULL DEFAULT '' COMMENT '开户行' AFTER `bank_card_no`;
 ALTER TABLE `electricity_order_user` ADD COLUMN `bank_card_username`  varchar(128) NOT NULL DEFAULT '' COMMENT '银行卡姓名' AFTER `bank_card`;
-
+ALTER TABLE `electricity_order_user` ADD COLUMN `pay_check_time` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '银行转账审核时间' AFTER `bank_card_username`;

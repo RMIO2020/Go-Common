@@ -54,11 +54,12 @@ var En = subMsgType{
 	LotNumberNotExists:       "Lot number does not exist",
 
 	// 订单
-	OrderTimeOut:      "Order timeout",
-	MinimumQuantity:   "Less than the minimum purchase quantity",
-	MaximumQuantity:   "Maximum purchase quantity exceeded",
-	NotPayableOrder:   "The order is not payable",
-	StoreGreaterTotal: "预存金额大于实际支付金额",
+	OrderTimeOut:                       "Order timeout",
+	MinimumQuantity:                    "Less than the minimum purchase quantity",
+	MaximumQuantity:                    "Maximum purchase quantity exceeded",
+	NotPayableOrder:                    "The order is not payable",
+	StoreGreaterTotal:                  "The deposit amount is greater than the actual payment amount",
+	SingleOrderNotEditStoreOrderStatus: "Single person group cannot modify the order status of pre stored service charge",
 
 	// 活动
 	ActivityEnds:           "Activity has ended",
