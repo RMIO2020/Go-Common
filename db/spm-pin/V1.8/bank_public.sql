@@ -7,4 +7,4 @@ CREATE TABLE `bank_public` (
   `create_time` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '添加时间',
   `update_time` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COMMENT='银行卡转账公有信息表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='银行卡转账公有信息表';

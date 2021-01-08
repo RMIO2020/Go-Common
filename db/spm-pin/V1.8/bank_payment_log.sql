@@ -13,8 +13,9 @@ CREATE TABLE `bank_payment_log` (
   `public_bank_card_username` varchar(128) NOT NULL DEFAULT '' COMMENT '账户名称',
   `public_bank_card` varchar(128) NOT NULL DEFAULT '' COMMENT '银行名称',
   `public_bank_card_no` varchar(128) NOT NULL DEFAULT '' COMMENT '银行账户（卡号）',
+  `pay_check_time` datetime NOT NULL,
   `status` tinyint(4) NOT NULL DEFAULT 0 COMMENT '状态：0为待确认，1为成功，2为失败',
   `create_time` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '添加时间',
   `update_time` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COMMENT='银行卡转账记录';
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COMMENT='银行卡转账记录';
