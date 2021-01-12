@@ -8,6 +8,7 @@ const (
 	// 拼团
 	OrderCountDown = "ping:order:down:" //拼团倒计时
 	Transaction    = "Tx:"              // 处理交易 Token
+	OrderGoodsTemp = "order:temp:"      // 商品临时订单
 
 	// 支付
 	CachePayOrder = "CachePayOrder:" // 支付缓存
