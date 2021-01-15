@@ -2,7 +2,7 @@ package smtp
 
 import (
 	"fmt"
-	"github.com/RMIO2020/Go-Message/sync"
+	"github.com/RMIO2020/GO-PIN/sync"
 	"net/smtp"
 	"strings"
 )
