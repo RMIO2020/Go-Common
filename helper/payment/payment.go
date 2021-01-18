@@ -1,7 +1,10 @@
 package payment
 
+import "strings"
+
 // GetEmailPayType 获取邮件的支付方式
 func GetEmailPayType(payType string) string {
+	payType = strings.ToUpper(payType)
 	switch payType {
 	case "WECHAT":
 		return "微信"
@@ -13,6 +16,7 @@ func GetEmailPayType(payType string) string {
 }
 
 func GetEmailCurrencyUnit(currency string) string {
+	currency = strings.ToUpper(currency)
 	switch currency {
 	case "CNY":
 		return "元"
