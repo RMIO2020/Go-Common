@@ -26,3 +26,13 @@ func GetEmailCurrencyUnit(currency string) string {
 		return "元"
 	}
 }
+
+func GetCurrencyByPayType(payType string) string {
+	payType = strings.ToUpper(payType)
+	switch payType {
+	case "VIRTUAL":
+		return "USDT"
+	default:
+		return "CNY"
+	}
+}
