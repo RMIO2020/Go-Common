@@ -38,6 +38,8 @@ func GetCurrencyByPayType(payType string) string {
 	switch payType {
 	case "VIRTUAL":
 		return "USDT"
+	case "CREDITCARD":
+		return "USD"
 	default:
 		return "CNY"
 	}
