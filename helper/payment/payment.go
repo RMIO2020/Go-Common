@@ -9,7 +9,11 @@ func GetEmailPayType(payType string) string {
 	case "WECHAT":
 		return "微信"
 	case "VIRTUAL":
-		return "虚拟币"
+		return "USDT"
+	case "BANK":
+		return "银行卡转账"
+	case "CREDITCARD":
+		return "信用卡"
 	default:
 		return "其他支付方式"
 	}
@@ -19,11 +23,13 @@ func GetEmailCurrencyUnit(currency string) string {
 	currency = strings.ToUpper(currency)
 	switch currency {
 	case "CNY":
-		return "元"
+		return "CNY"
 	case "USDT":
 		return "USDT"
+	case "USD":
+		return "USD"
 	default:
-		return "元"
+		return "CNY"
 	}
 }
 
