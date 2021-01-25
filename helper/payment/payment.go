@@ -1,6 +1,9 @@
 package payment
 
-import "strings"
+import (
+	"github.com/shopspring/decimal"
+	"strings"
+)
 
 // GetEmailPayType 获取邮件的支付方式
 func GetEmailPayType(payType string) string {
@@ -43,4 +46,18 @@ func GetCurrencyByPayType(payType string) string {
 	default:
 		return "CNY"
 	}
+}
+
+// GetAmountByCurrency 获取金额通过币种
+func GetAmountByCurrency(amount float64, currency string, usdtRate float64) (cnyAmount, usdtAmount float64) {
+	switch currency {
+	case "CNY":
+		cnyAmount = amount
+		usdtAmount, _ = decimal.NewFromFloat(amount).Div(decimal.NewFromFloat(usdtRate)).Float64()
+		break
+	case "USDT":
+		cnyAmount, _ = decimal.NewFromFloat(amount).Mul(decimal.NewFromFloat(usdtRate)).Float64()
+		usdtAmount = amount
+	}
+	return
 }
