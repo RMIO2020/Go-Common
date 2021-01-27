@@ -10,7 +10,10 @@ import (
 
 var AliyunMQClient mq_http_sdk.MQClient
 var Prodrcer mq_http_sdk.MQProducer
-var Mq *AliyunMQ
+
+type Consumer interface {
+	Consumption([]mq_http_sdk.ConsumeMessageEntry) ([]string, error)
+}
 
 func InitAliyun(endpoint, accessKey, secretKey, securityToken string) {
 	tmpClient := mq_http_sdk.NewAliyunMQClient(endpoint, accessKey, secretKey, securityToken)
@@ -52,9 +55,16 @@ func (M *AliyunMQ) PullMsg(Business func([]mq_http_sdk.ConsumeMessageEntry) ([]s
 	errChan := make(chan error)
 	for {
 		go func() {
+			defer func() {
+				err := recover()
+				if err != nil {
+					fmt.Println("goroutine failed:", err)
+				}
+			}()
 			select {
 			case resp := <-respChan:
 				{
+					fmt.Println("receive msg:", resp.Messages)
 					handles, err := Business(resp.Messages)
 					if err != nil {
 						fmt.Printf("Business err %+v  -------->\n", err)
@@ -80,7 +90,7 @@ func (M *AliyunMQ) PullMsg(Business func([]mq_http_sdk.ConsumeMessageEntry) ([]s
 				{
 					// 没有消息
 					if strings.Contains(err.(errors.ErrCode).Error(), "MessageNotExist") {
-						fmt.Println("No new message, continue!")
+						//fmt.Println("No new message, continue!")
 					} else {
 						fmt.Println(err)
 						time.Sleep(time.Duration(3) * time.Second)
@@ -89,7 +99,7 @@ func (M *AliyunMQ) PullMsg(Business func([]mq_http_sdk.ConsumeMessageEntry) ([]s
 				}
 			case <-time.After(35 * time.Second):
 				{
-					fmt.Println("Timeout of consumer message ??")
+					//fmt.Println("Timeout of consumer message ??")
 					endChan <- 1
 				}
 			}
@@ -103,4 +113,5 @@ func (M *AliyunMQ) PullMsg(Business func([]mq_http_sdk.ConsumeMessageEntry) ([]s
 		)
 		<-endChan
 	}
+
 }

@@ -22,6 +22,16 @@ func CalculationAmountUSDTToBTC(Amount float64) (result float64) {
 	return
 }
 
+func CalculationAmountUSDTToUsd(Currency string, Amount float64) (result float64) {
+	if Currency == "USD" {
+		result = Amount
+	} else {
+		UAmount := CalculationAmountToUSDT(Currency, Amount)
+		result = UAmount * GetRateToUsd("USDT")
+	}
+	return
+}
+
 func CalculationAmountToCNY(Currency string, Amount float64) (result float64) {
 	if Currency == "CNY" {
 		result = Amount
@@ -47,6 +57,28 @@ func GetRateToCny(Currency string) (result float64) {
 	return
 }
 
+func CalculationAmountToUsd(Currency string, Amount float64) (result float64) {
+	if Currency == "USD" {
+		result = Amount
+	} else {
+		UAmount := CalculationAmountToUSDT(Currency, Amount)
+		result = UAmount * GetRateToUsd("USDT")
+	}
+	return
+}
+
+// GetRateToUsd
+func GetRateToUsd(Currency string) (result float64) {
+	Currency = strings.ToUpper(Currency)
+	switch Currency {
+	default:
+		currencyToUsdt := GetRateToUSDT(Currency)
+		usdToUsdt := GetRateToUSDT("USD")
+		result, _ = decimal.NewFromFloat(currencyToUsdt).Div(decimal.NewFromFloat(usdToUsdt)).Float64()
+	}
+	return
+}
+
 func GetRateToUSDT(Currency string) (result float64) {
 	Currency = strings.ToUpper(Currency)
 	var err error
@@ -63,7 +95,7 @@ func GetRateToUSDT(Currency string) (result float64) {
 	case "CKB":
 		rVal := Red.Get(CKBUSDT).Val()
 		result, err = strconv.ParseFloat(rVal, 64)
-	case "USDT":
+	case "USDT", "FUSDT":
 		result = 1
 	case "CNY":
 		rVal := Red.Get(CNYUSDT).Val()
@@ -72,6 +104,8 @@ func GetRateToUSDT(Currency string) (result float64) {
 			rate = CNYTOUSD
 		}
 		result = rate
+	case "USD":
+		result = USDTOUSDT
 	default:
 		result = 0
 	}

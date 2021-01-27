@@ -1,0 +1,2 @@
+ALTER TABLE `team` ADD COLUMN `shelf_time_is_wait`  enum('NO','YES') NOT NULL DEFAULT 'NO' COMMENT '预计上架时间是否待定' AFTER `delivery_time_end`;
+ALTER TABLE `team` MODIFY COLUMN `stock`  int(11) NOT NULL DEFAULT 0 COMMENT '矿机份数' AFTER `group_num`;

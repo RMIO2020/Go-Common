@@ -4,3 +4,6 @@ ALTER TABLE `electricity_order_user` ADD COLUMN `deduction_time`  datetime NOT N
 
 -- version/V1.6/backend 吴永展 增加发布状态
 ALTER TABLE `electricity_order_user` ADD COLUMN `publish_status`  enum('NO','YES') NOT NULL DEFAULT 'YES' COMMENT '发布状态' AFTER `remarks`;
+
+-- 2020.11.06 吴永展 增加支付订单号
+ALTER TABLE `electricity_order_user` ADD COLUMN `pay_order_no`  varchar(256) NOT NULL DEFAULT '' COMMENT '支付订单号' AFTER `order_no`;

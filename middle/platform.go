@@ -7,10 +7,11 @@ import (
 )
 
 const (
-	PinTuan = "pin-min"  // 拼团
-	SpmMin  = "spm-min"  // 超级矿工
-	RockMin = "rock-min" // 运算力
-	GsMin   = "gs-min"   // 运算力
+	PinTuan    = "pin-min"  // 拼团
+	SpmMin     = "spm-min"  // 超级矿工
+	RockMin    = "rock-min" // 运算力
+	GsMin      = "gs-min"   // 运算力
+	HostingMin = "hosting"  //
 )
 
 func (M *Middle) AuthPlatform() func(c *gin.Context) {

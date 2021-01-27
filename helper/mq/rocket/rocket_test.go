@@ -1,99 +1,97 @@
 package rocket
 
 import (
-	"context"
+	"encoding/json"
 	"errors"
 	"fmt"
+	_struct "github.com/RMIO2020/Go-Common/helper/mq/struct"
+	"github.com/RMIO2020/Go-Common/helper/smtp"
+	resp "github.com/RMIO2020/Go-Message/common/responses"
 	"github.com/aliyunmq/mq-http-go-sdk"
-	"github.com/apache/rocketmq-client-go/v2/consumer"
-	"github.com/apache/rocketmq-client-go/v2/primitive"
 	"testing"
+	"time"
 )
 
-func InitTest() (err error) {
-	err = Init("[\"127.0.0.1:9876\"]", 2)
-	return
-}
-
-func TestNewProducer(t *testing.T) {
-	err := InitTest()
-	if err != nil {
-		fmt.Printf("InitTest err is %+v \n", err)
-	}
-	per, err := Rocket.NewProducer(GroupToTest)
-	if err != nil {
-		fmt.Printf("NewProducer err is %+v \n", err)
-	}
-	fmt.Printf("per is %+v \n", per)
-
-	result, err := per.SendSync(context.Background(), &primitive.Message{
-		Topic: "test",
-		Body:  []byte("Hello RocketMQ Go Client!"),
-	})
-	if err != nil {
-		fmt.Printf("err is %+v \n", err)
-	}
-	fmt.Printf("result is %+v \n", result)
-}
-
-func TestMQ_NewPushConsume(t *testing.T) {
-	err := InitTest()
-	if err != nil {
-		fmt.Printf("InitTest err is %+v \n", err)
-	}
-	c, err := Rocket.NewPushConsume(GroupToTest)
-	if err != nil {
-		fmt.Printf("NewProducer err is %+v \n", err)
-	}
-	fmt.Printf("c is %+v \n", c)
-
-	err = c.Subscribe("test", consumer.MessageSelector{}, nil)
-	if err != nil {
-		fmt.Printf("Subscribe err is %+v \n", err)
-	}
-	err = c.Start()
-	fmt.Printf("Start err is %+v \n", err)
-}
-
-func TestAliYun(t *testing.T) {
+func InitTest() (Mq *AliyunMQ) {
 	// 设置HTTP接入域名（此处以公共云生产环境为例）
 	endpoint := "http://1839080919510286.mqrest.cn-beijing.aliyuncs.com"
 	// AccessKey 阿里云身份验证，在阿里云服务器管理控制台创建
-	accessKey := "LTAI4G1L6gECwdPLLzNcuSzy"
+	accessKey := ""
 	// SecretKey 阿里云身份验证，在阿里云服务器管理控制台创建
-	secretKey := "fXLuIlgxsevxxUVfNch9bGj65VilOc"
+	secretKey := ""
 	// 所属的 Topic
-	topic := "RM-Online"
+	topic := "RM-Test"
 	// Topic所属实例ID，默认实例为空
 	instanceId := "MQ_INST_1839080919510286_BXSQIsss"
-	// Gour Id
-	groupId := "GID_Notice"
-	// Tag
-	tag := "notice"
 
 	InitAliyun(endpoint, accessKey, secretKey, "")
-	Mq := NewAliyun()
-
+	Mq = NewAliyun()
 	Mq.InitProducer(instanceId, topic)
-	for v := 0; v < 1; v++ {
-		ret, err := Mq.PushMsg("{\"type\":\"Registered\",\"email\":\"shiyaojia@rockminer.com\",\"phone\":\"\",\"code\":\"1234\",\"platform\":\"pin-min\",\"language\":\"en\"}", tag)
-		if err != nil {
-			fmt.Printf("err : %+v \n", err)
-		}
-		fmt.Printf("ret : %+v \n", ret)
-		fmt.Printf("ret.id : %+v \n", ret.MessageId)
-
-	}
-
-	Mq.InitConsumer(instanceId, topic, groupId, tag)
-	Mq.PullMsg(readMsg)
+	Mq.InitConsumer(instanceId, topic, "GID_Notice", SystemNotice)
+	return
 }
 
-func readMsg(Data []mq_http_sdk.ConsumeMessageEntry) ([]string, error) {
+func TestAliyunMQ_PullMsg(t *testing.T) {
+	Mq := InitTest()
+
+	over := make(chan bool)
+	go func() {
+		sm := &_struct.SystemNotice{
+			Type:     _struct.Cash,
+			User:     "测试脚本",
+			Platform: "pin-min",
+			CashNotice: &_struct.CashNotice{
+				Type:     smtp.SysRecharge,
+				Time:     time.Now().Format("2006-01-02 15:04:05"),
+				Amount:   "0.01",
+				Currency: "USDT",
+			},
+		}
+		sm2, _ := json.Marshal(sm)
+		sm3 := string(sm2)
+		for true {
+			ret, err := Mq.PushMsg(sm3, SystemNotice)
+			if err != nil {
+				fmt.Printf("Notice err : %+v \n", err)
+			}
+			fmt.Printf("Notice ret : %+v \n", ret)
+			fmt.Printf("Notice ret.id : %+v \n", ret.MessageId)
+			time.Sleep(time.Second)
+		}
+	}()
+	go func() {
+		for true {
+			nm := &_struct.Notice{
+				Type:     smtp.Registered,
+				Email:    "shiyaojia@rockminer.com",
+				Platform: "pin-min",
+				Language: resp.ZhCnLan,
+			}
+			nm2, _ := json.Marshal(nm)
+			nm3 := string(nm2)
+			ret, err := Mq.PushMsg(nm3, Notice)
+			if err != nil {
+				fmt.Printf("SystemNotice err : %+v \n", err)
+			}
+			fmt.Printf("SystemNotice ret : %+v \n", ret)
+			fmt.Printf("SystemNotice ret.id : %+v \n", ret.MessageId)
+			time.Sleep(time.Second)
+		}
+	}()
+	<-over
+}
+
+func TestAliyunMQ_PushMsg(t *testing.T) {
+	Mq := InitTest()
+	Mq.PullMsg(new(TestReadMsg).Consumption)
+}
+
+type TestReadMsg struct{}
+
+func (T *TestReadMsg) Consumption(Data []mq_http_sdk.ConsumeMessageEntry) ([]string, error) {
 	var handles []string
 	for k, v := range Data {
 		fmt.Println("K:", k, "| v body:", v.MessageBody)
-		fmt.Println("v", v)
 		handles = append(handles, v.ReceiptHandle)
 	}
 	return handles, errors.New("read over")

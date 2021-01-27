@@ -1,0 +1,1 @@
+ALTER TABLE `wallet_withdraw` MODIFY COLUMN `currency`  enum('BTC','ETH','USDT','ZEC','FUSDT','CKB') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT 'BTC' COMMENT '币种' AFTER `wallet_id`;
