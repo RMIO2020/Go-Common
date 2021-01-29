@@ -34,18 +34,21 @@ type CashNotice struct {
 }
 
 type PaymentNotice struct {
-	Type         string `json:"type"`
-	PayType      string `json:"pay_type"`
-	Time         string `json:"time"`
-	GoodsName    string `json:"goods_name"`
-	GoodsNumber  string `json:"goods_number"`
-	GoodsAmount  string `json:"goods_amount"`
-	OrderAmount  string `json:"order_amount"`
-	PayCurrency  string `json:"pay_currency"`
-	PayAmount    string `json:"pay_amount"`
-	ServerAmount string `json:"server_amount"`
-	BillId       string `json:"bill_id"`
-	BillAmount   string `json:"bill_amount"`
+	Type                 string `json:"type"`
+	PayType              string `json:"pay_type"`
+	Time                 string `json:"time"`
+	GoodsName            string `json:"goods_name"`
+	GoodsNumber          string `json:"goods_number"`
+	GoodsAmount          string `json:"goods_amount"`
+	OrderAmount          string `json:"order_amount"`
+	PayCurrency          string `json:"pay_currency"`
+	PayAmount            string `json:"pay_amount"`
+	ServerAmount         string `json:"server_amount"`
+	BillId               string `json:"bill_id"`
+	BillAmount           string `json:"bill_amount"`
+	CheckBankTime        string `json:"check_bank_time"`
+	CheckBankResult      string `json:"check_bank_result"`
+	CheckBankTitleResult string `json:"check_bank_title_result"`
 }
 
 type WarningNotice struct {
