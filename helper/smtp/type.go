@@ -18,5 +18,5 @@ const (
 	SysServiceFeeInsufficient = "SysServiceFeeInsufficient" // 预付服务费不足催缴
 	SysOverdueBillPayment     = "SysOverdueBillPayment"     // 账单逾期催缴
 	SysOverdueBillShutdown    = "SysOverdueBillShutdown"    // 账单逾期停机
-	SysServiceCheckBank       = "SysServiceCheckBank"       // 审核银行卡
+	SysServiceCheckBank       = "SysServiceCheckBank"       // 审核银行卡转账
 )
