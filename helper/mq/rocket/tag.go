@@ -8,4 +8,5 @@ const (
 	SystemNotice    = "Sys"
 	PayCredit       = "payCredit"
 	FirstGoodsOrder = "firstGoodsOrder"
+	MessageNotice = "messageNotice"
 )
