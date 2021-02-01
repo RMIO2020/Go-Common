@@ -44,6 +44,5 @@ func (E *Smtp) SendToMail(to, subject, body, MailType string) error {
 	fmt.Println("Send Email ............")
 	err := smtp.SendMail(E.Host, auth, E.SendUser, sendTo, msg)
 	fmt.Println("Result ", err)
-	return err
 	return nil
 }
