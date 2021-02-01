@@ -2,7 +2,6 @@ package smtp
 
 import (
 	"fmt"
-	"github.com/RMIO2020/GO-PIN/sync"
 	"net/smtp"
 	"strings"
 )
@@ -43,11 +42,8 @@ func (E *Smtp) SendToMail(to, subject, body, MailType string) error {
 	msg := []byte("To: " + to + "\r\nFrom: " + E.ReplyUser + ">\r\nSubject: " + subject + "\r\n" + ContentType + "\r\n\r\n" + body)
 	sendTo := strings.Split(to, ";")
 	fmt.Println("Send Email ............")
-	sync.Go(func() {
-		err := smtp.SendMail(E.Host, auth, E.SendUser, sendTo, msg)
-		if err != nil {
-			fmt.Println("Send Email Result:", err.Error())
-		}
-	})
+	err := smtp.SendMail(E.Host, auth, E.SendUser, sendTo, msg)
+	fmt.Println("Result ", err)
+	return err
 	return nil
 }
