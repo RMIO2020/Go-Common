@@ -84,6 +84,7 @@ const (
 	NotPayableOrder                    = 80003
 	StoreGreaterTotal                  = 80004
 	SingleOrderNotEditStoreOrderStatus = 80005
+	LackDoubleHostingAddress           = 80006
 
 	//活动
 	ActivityEnds           = 90000

@@ -60,6 +60,7 @@ var En = subMsgType{
 	NotPayableOrder:                    "The order is not payable",
 	StoreGreaterTotal:                  "The deposit amount is greater than the actual payment amount",
 	SingleOrderNotEditStoreOrderStatus: "Single person group cannot modify the order status of pre stored service charge",
+	LackDoubleHostingAddress:           "Missing double wallet address",
 
 	// 活动
 	ActivityEnds:           "Activity has ended",
