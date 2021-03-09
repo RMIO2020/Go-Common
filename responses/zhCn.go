@@ -51,6 +51,7 @@ var ZhCn = subMsgType{
 	IncorrectProductQuantity: "产品数量不正确",
 	BillEmptyMachine:         "账单的矿机数量为零",
 	LotNumberNotExists:       "批次号不存在",
+	CurrencyNotConsistent:    "币种不一致",
 
 	// 订单
 	OrderTimeOut:                       "订单超时",

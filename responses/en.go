@@ -52,6 +52,7 @@ var En = subMsgType{
 	IncorrectProductQuantity: "Incorrect product quantity",
 	BillEmptyMachine:         "The number of miners in the bill is zero",
 	LotNumberNotExists:       "Lot number does not exist",
+	CurrencyNotConsistent:    "The currency is not consistent",
 
 	// 订单
 	OrderTimeOut:                       "Order timeout",
