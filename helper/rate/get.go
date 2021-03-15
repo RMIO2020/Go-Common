@@ -95,6 +95,9 @@ func GetRateToUSDT(Currency string) (result float64) {
 	case "CKB":
 		rVal := Red.Get(CKBUSDT).Val()
 		result, err = strconv.ParseFloat(rVal, 64)
+	case "HNS":
+		rVal := Red.Get(HNSUSDT).Val()
+		result, err = strconv.ParseFloat(rVal, 64)
 	case "USDT", "FUSDT":
 		result = 1
 	case "CNY":
