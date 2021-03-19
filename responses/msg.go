@@ -26,26 +26,27 @@ type subMsgType map[int]string
 
 const (
 	// 系统
-	Success              = 0
-	UnknownError         = 10000
-	ParameterError       = 10001
-	OperationFailed      = 10002
-	MissingParameters    = 10003
-	NOTFound             = 10004
-	InternalDataError    = 10005
-	InvalidOperation     = 10006
-	UserNotAuthorize     = -10050
-	FrequencyTooFast     = 10007
-	DataAlreadyExists    = 10008
-	DataDoesNotExist     = 10009
-	CurrencyNotSupported = 10010
-	PayOrderRepeat       = 10011
-	LackPlatform         = 10012
-	AmountSmall          = 10013
-	CanNotDoThis         = 10014
-	UnopenedPlatform     = 10015
-	UnsupportedType      = 10016
-	UntrustedSource      = 10017
+	Success                    = 0
+	UnknownError               = 10000
+	ParameterError             = 10001
+	OperationFailed            = 10002
+	MissingParameters          = 10003
+	NOTFound                   = 10004
+	InternalDataError          = 10005
+	InvalidOperation           = 10006
+	UserNotAuthorize           = -10050
+	FrequencyTooFast           = 10007
+	DataAlreadyExists          = 10008
+	DataDoesNotExist           = 10009
+	CurrencyNotSupported       = 10010
+	PayOrderRepeat             = 10011
+	LackPlatform               = 10012
+	AmountSmall                = 10013
+	CanNotDoThis               = 10014
+	UnopenedPlatform           = 10015
+	UnsupportedType            = 10016
+	UntrustedSource            = 10017
+	StartTimeNotGreaterEndTime = 10018
 
 	// 文件
 	FileUploadFail = 20000
