@@ -15,5 +15,7 @@ func SetRate(Symbol string, rate float64) {
 		Red.Set(ZECUSDT, rate, cache.TimeDayToSeven)
 	case CKBUSDT:
 		Red.Set(CKBUSDT, rate, cache.TimeDayToSeven)
+	case HNSUSDT:
+		Red.Set(HNSUSDT, rate, cache.TimeDayToSeven)
 	}
 }
