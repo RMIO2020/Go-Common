@@ -63,16 +63,14 @@ func GetAmountByCurrency(amount float64, currency string, usdtToRate float64) (c
 }
 
 // GetAmountByCurrency1 获取金额通过币种
-func GetAmountByCurrency1(amount float64, currency string, usdtToRate float64) (currencyAmount, cnyAmount, usdtAmount float64) {
+func GetAmountByCurrency1(inCnyAmount float64, currency string, usdtToRate float64) (currencyAmount, cnyAmount, usdtAmount float64) {
+	cnyAmount = inCnyAmount
+	usdtAmount, _ = decimal.NewFromFloat(inCnyAmount).Mul(decimal.NewFromFloat(usdtToRate)).Float64()
 	switch currency {
 	case "CNY":
-		cnyAmount = amount
-		usdtAmount, _ = decimal.NewFromFloat(amount).Div(decimal.NewFromFloat(usdtToRate)).Float64()
 		currencyAmount = cnyAmount
 		break
 	case "USDT":
-		cnyAmount, _ = decimal.NewFromFloat(amount).Mul(decimal.NewFromFloat(usdtToRate)).Float64()
-		usdtAmount = amount
 		currencyAmount = usdtAmount
 	}
 	return
