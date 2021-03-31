@@ -45,7 +45,7 @@ var En = subMsgType{
 
 	// 产品
 	NoProductData:            "No product data",
-	InventoryShortage:        "Inventory shortage",
+	InventoryShortage:        "Out of stock, please try again later",
 	OffShelf:                 "Product is no longer available",
 	NotAvailable:             "Not available for purchase",
 	TotalInventoryNotUpdate:  "The number of orders placed is less than the total number of miners and no modification is allowed",

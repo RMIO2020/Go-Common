@@ -44,7 +44,7 @@ var ZhCn = subMsgType{
 
 	// 产品
 	NoProductData:            "没有该产品数据",
-	InventoryShortage:        "库存不足",
+	InventoryShortage:        "库存不足，请稍后重试",
 	OffShelf:                 "商品已下架",
 	NotAvailable:             "不可购买",
 	TotalInventoryNotUpdate:  "下单数量小于矿机总数量则不允许修改",
