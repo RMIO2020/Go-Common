@@ -87,6 +87,7 @@ const (
 	StoreGreaterTotal                  = 80004
 	SingleOrderNotEditStoreOrderStatus = 80005
 	LackDoubleHostingAddress           = 80006
+	DailySettlementRequires            = 80007
 
 	//活动
 	ActivityEnds           = 90000

@@ -62,6 +62,7 @@ var ZhCn = subMsgType{
 	StoreGreaterTotal:                  "预存金额大于实际支付金额",
 	SingleOrderNotEditStoreOrderStatus: "单人成团不能修改预存服务费订单状态",
 	LackDoubleHostingAddress:           "缺少双挖钱包地址",
+	DailySettlementRequires:            "日结最低需购#台",
 
 	// 活动
 	ActivityEnds:           "活动已经结束",

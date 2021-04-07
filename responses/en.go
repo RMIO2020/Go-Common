@@ -63,6 +63,7 @@ var En = subMsgType{
 	StoreGreaterTotal:                  "The deposit amount is greater than the actual payment amount",
 	SingleOrderNotEditStoreOrderStatus: "Single person group cannot modify the order status of pre stored service charge",
 	LackDoubleHostingAddress:           "Missing double wallet address",
+	DailySettlementRequires:            "Daily settlement requires at least # units",
 
 	// 活动
 	ActivityEnds:           "Activity has ended",
