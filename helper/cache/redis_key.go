@@ -40,6 +40,8 @@ const (
 
 	SynchronousUserHashLastId   = "Syn:User:Hash:Id"   // 同步用户 Hash 端 ID
 	SynchronousUserModuleLastId = "Syn:User:Module:Id" // 同步用户 Module 端 ID
+
+	AdminCheckGoogleKey = "admin-check-google-key" // 获取管理后台要验证google的googleKey
 )
 
 /* 获取支付缓存 Key */
@@ -88,4 +90,8 @@ func GetBdPhoneEmail(Email string) string {
 
 func GetBdPhoneSms(Email string) string {
 	return BdPhoneToPhone + Email
+}
+
+func GetAdminCheckGoogleKey() string {
+	return AdminCheckGoogleKey
 }
